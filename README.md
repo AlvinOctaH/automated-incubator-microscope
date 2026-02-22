@@ -43,10 +43,11 @@ $$
 $$
 
 **C. Interference Analysis:**
-- No collisions detected
 <p align="center">
-  <img src="" width="800"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Inference%20Analysis.jpeg" width="800"/>
 </p>
+
+The interference analysis reports several interferences; however, these are not physically relevant in real-world assembly. The detected interferences occur within precision components such as linear rails and threaded regions of the KFL08 bearing, which are intentionally modeled with overlapping geometry in CAD. Therefore, no actual collisions or functional interferences are present in the final design.
 
 ### Structural Rigidity
 **A. Stage Plate Analysis (Static Load):**
@@ -78,7 +79,7 @@ $$
 - The higher stiffness of Aluminum 6061 effectively resists bending caused by the self-weight of the system, including the stepper motor.
 
 **B. Motor Bracket Analysis:**
-Still Progress
+Still in progress (sip)
 
 ### Thermal Consideration
 <p align="center">
@@ -88,9 +89,12 @@ Still Progress
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200" />
 </p>
 
+
 ### Vibration Consideration
-Still Progress
+sip
+
 ### Drawing & Tolerance
-Still Progress
+sip
+
 ### Tolerance Stack Analysis
-Still Progress
+sip
