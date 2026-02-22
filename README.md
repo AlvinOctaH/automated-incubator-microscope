@@ -11,5 +11,5 @@ Degrees of Freedom (DOF):
 
 All axes exhibited no unintended rotations or free translations, confirming proper constraint and assembly of the stage.
 <p align="center">
-  <img src="images/dof_check.png" width="600"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Kinematic%20%26%20Motion%20Analysis.gif" width="800"/>
 </p>
