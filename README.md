@@ -4,12 +4,80 @@
 This section summarizes the engineering analysis and results for a custom linear stage intended for microscopy applications.
 
 ### Kinematic & Motion Analysis
-Degrees of Freedom (DOF):
+**A. Degrees of Freedom (DOF):**
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Kinematic%20%26%20Motion%20Analysis.gif" width="800"/>
+</p>
+
 - X-axis: 1 translational (stacked system)
 - Y-axis: 1 translational
 - Z-axis: 1 translational 
 
 All axes exhibited no unintended rotations or free translations, confirming proper constraint and assembly of the stage.
+
+**B. Lead Screw Motion:**
+- Lead screw pitch: 1 mm/rev
+- Stepper motor: 200 steps/rev, full-step (x,y,z axis)
+- Theoretical linear resolution:
+
+$$
+\begin{aligned}
+\text{Resolution} &= \frac{\text{Lead Screw Pitch}}{\text{Steps per Revolution}} \\
+                  &= \frac{1 \text{mm}}{200 \times 1} \\
+                  &= 0.005 \text{mm} \\
+                  &= 5 \mu\text{m}
+\end{aligned}
+$$
+
+- Distance between plates = 9 mm
+- Theoretical required number of motor pulses:
+
+$$
+\begin{aligned}
+\text{Required Steps}
+&= \frac{\text{Travel Distance}}{\text{Resolution}} \\
+&= \frac{9 \text{mm}}{5 \mu\text{m}} \\
+&= \frac{9000 \mu\text{m}}{5 \mu\text{m}} \\
+&= 1800 \text{steps}
+\end{aligned}
+$$
+
+**C. Interference Analysis:**
+- No collisions detected
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Kinematic%20%26%20Motion%20Analysis.gif" width="800"/>
+  <img src="" width="800"/>
 </p>
+
+### Structural Rigidity
+**A. Stage Plate Analysis (Static Load):**
+- Load applied: Gravity force only
+- Gravity direction: Vertical (−Z axis)
+- Acceleration: 9.81 m/s²
+
+**A1. PLA-CF Configuration**
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF%20Stress%20Analysis.jpeg" width="800"/>
+</p>
+
+- The displacement contour shows dominant green regions on the structure.
+- These green regions correspond to a displacement range of approximately 0.0364 – 0.05461 mm.
+- The deformation is mainly concentrated around:
+  - The upper stage plate
+  - The area near the stepper motor mounting
+- This indicates that the self-weight of the stepper motor is the dominant contributor to the overall deformation.
+- Due to the lower elastic modulus of PLA-CF, the structure exhibits global sagging under gravity-only loading.
+
+**A2. Aluminum 6061**
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum%206061%20Stress%20Analysis.jpeg" width="800"/>
+</p>
+
+- The displacement contour is dominated by dark blue regions.
+- Dark blue corresponds to near-zero displacement (≈ 0 mm, minimum value).
+- This indicates that the structure experiences negligible deformation under gravity-only loading.
+- The higher stiffness of Aluminum 6061 effectively resists bending caused by the self-weight of the system, including the stepper motor.
+
+**B. Motor Bracket Analysis:**
+Still Progress
+
+### Thermal Consideration
