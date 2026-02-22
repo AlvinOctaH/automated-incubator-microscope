@@ -1,6 +1,6 @@
 # Automation-Incubator-Microscope
 
-## Design Documentation
+## Mechanical Documentation
 This section summarizes the engineering analysis and results for a custom linear stage intended for microscopy applications.
 
 ### Kinematic & Motion Analysis
@@ -98,3 +98,5 @@ sip
 
 ### Tolerance Stack Analysis
 sip
+
+## Electrical Documentation
