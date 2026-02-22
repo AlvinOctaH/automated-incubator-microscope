@@ -47,7 +47,9 @@ $$
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Inference%20Analysis.jpeg" width="800"/>
 </p>
 
+<p align="justify">
 The interference analysis reports several interferences; however, these are not physically relevant in real-world assembly. The detected interferences occur within precision components such as linear rails and threaded regions of the KFL08 bearing, which are intentionally modeled with overlapping geometry in CAD. Therefore, no actual collisions or functional interferences are present in the final design.
+</p>
 
 ### Structural Rigidity
 **A. Stage Plate Analysis (Static Load):**
@@ -77,6 +79,15 @@ The interference analysis reports several interferences; however, these are not 
 - Dark blue corresponds to near-zero displacement (≈ 0 mm, minimum value).
 - This indicates that the structure experiences negligible deformation under gravity-only loading.
 - The higher stiffness of Aluminum 6061 effectively resists bending caused by the self-weight of the system, including the stepper motor.
+
+**Summary of Stage Plate Analysis**
+| Parameter | PLA-CF | Aluminum 6061 |
+|------------|------------|----------------|
+| Stiffness | Moderate | Very High |
+| Max Deflection | ~54 µm | ~0 µm |
+| Structural Rigidity | Exhibits global sagging | Negligible bending |
+| Focus Reliability | Not suitable for high magnification | Suitable for precision imaging |
+| Engineering Verdict | Acceptable for non-critical parts | Recommended for structural components |
 
 **B. Motor Bracket Analysis:**
 Still in progress (sip)
