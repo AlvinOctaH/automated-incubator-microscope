@@ -81,3 +81,16 @@ $$
 Still Progress
 
 ### Thermal Consideration
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20X.jpeg" width="200" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Y.jpeg" width="200" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Z.jpeg" width="200" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200" />
+</p>
+
+### Vibration Consideration
+Still Progress
+### Drawing & Tolerance
+Still Progress
+### Tolerance Stack Analysis
+Still Progress
