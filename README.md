@@ -84,7 +84,7 @@ The interference analysis reports several interferences; however, these are not 
 | Parameter | PLA-CF | Aluminum 6061 |
 |------------|------------|----------------|
 | Stiffness | Moderate | Very High |
-| Max Deflection | ~54 µm | ~0 µm |
+| Max Deflection | ~54 µm | <1 µm |
 | Structural Rigidity | Exhibits global sagging | Negligible bending |
 | Focus Reliability | Not suitable for high magnification | Suitable for precision imaging |
 | Engineering Verdict | Acceptable for non-critical parts | Recommended for structural components |
