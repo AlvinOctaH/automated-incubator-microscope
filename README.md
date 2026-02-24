@@ -59,11 +59,14 @@ The interference analysis reports several interferences; however, these are not 
 
 ##### A. PLA-CF Configuration
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF%20Stress%20Analysis.jpeg" width="800"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_1.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_02.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_4.png" width="500" height="400" />
 </p>
 
 - The displacement contour shows dominant green regions on the structure.
-- These green regions correspond to a displacement range of approximately 0.0364 – 0.05461 mm.
+- These green regions correspond to a displacement range of approximately 0.0349 – 0.05235 mm.
 - The deformation is mainly concentrated around:
   - The upper stage plate
   - The area near the stepper motor mounting
@@ -72,7 +75,10 @@ The interference analysis reports several interferences; however, these are not 
 
 ##### B. Aluminum 6061
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum%206061%20Stress%20Analysis.jpeg" width="800"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Alumnium_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_1.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_4.png" width="500" height="400" />
 </p>
 
 - The displacement contour is dominated by dark blue regions.
