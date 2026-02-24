@@ -98,6 +98,9 @@ The interference analysis reports several interferences; however, these are not 
 #### Motor Bracket Analysis:
 Still in progress (sip)
 
+### Vibration Consideration
+sip
+
 ### Thermal Consideration
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20X.jpeg" width="200" />
@@ -106,11 +109,6 @@ Still in progress (sip)
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200" />
 </p>
 
-
-
-### Vibration Consideration (ini entar bakal dari rumus gitu hubungan dengan Structural Rigidity)
-sip
-
 ### Drawing & Tolerance
 sip
 
@@ -118,6 +116,7 @@ sip
 ### System Architecture
 #### Theoritical Approach
 Fuse sizing rule
+
 
 #### Power Distribution Architecture
 ```mermaid
