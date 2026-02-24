@@ -4,7 +4,7 @@
 This section summarizes the engineering analysis and results for a custom linear stage intended for microscopy applications.
 
 ### Kinematic & Motion Analysis
-**A. Degrees of Freedom (DOF):**
+#### Degrees of Freedom (DOF):
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Kinematic%20%26%20Motion%20Analysis.gif" width="800"/>
 </p>
@@ -15,7 +15,7 @@ This section summarizes the engineering analysis and results for a custom linear
 
 All axes exhibited no unintended rotations or free translations, confirming proper constraint and assembly of the stage.
 
-**B. Lead Screw Motion:**
+#### Lead Screw Motion:
 - Lead screw pitch: 1 mm/rev
 - Stepper motor: 200 steps/rev, full-step (x,y,z axis)
 - Theoretical linear resolution:
@@ -42,7 +42,7 @@ $$
 \end{aligned}
 $$
 
-**C. Interference Analysis:**
+#### Interference Analysis:
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Inference%20Analysis.jpeg" width="800"/>
 </p>
@@ -52,12 +52,12 @@ The interference analysis reports several interferences; however, these are not 
 </p>
 
 ### Structural Rigidity
-**A. Stage Plate Analysis (Static Load):**
+#### Stage Plate Analysis (Static Load):
 - Load applied: Gravity force only
 - Gravity direction: Vertical (−Z axis)
 - Acceleration: 9.81 m/s²
 
-**A1. PLA-CF Configuration**
+##### A. PLA-CF Configuration
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF%20Stress%20Analysis.jpeg" width="800"/>
 </p>
@@ -70,7 +70,7 @@ The interference analysis reports several interferences; however, these are not 
 - This indicates that the self-weight of the stepper motor is the dominant contributor to the overall deformation.
 - Due to the lower elastic modulus of PLA-CF, the structure exhibits global sagging under gravity-only loading.
 
-**A2. Aluminum 6061**
+##### B. Aluminum 6061
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum%206061%20Stress%20Analysis.jpeg" width="800"/>
 </p>
@@ -80,7 +80,7 @@ The interference analysis reports several interferences; however, these are not 
 - This indicates that the structure experiences negligible deformation under gravity-only loading.
 - The higher stiffness of Aluminum 6061 effectively resists bending caused by the self-weight of the system, including the stepper motor.
 
-**Summary of Stage Plate Analysis**
+##### Summary of Stage Plate Analysis
 | Parameter | PLA-CF | Aluminum 6061 |
 |------------|------------|----------------|
 | Stiffness | Moderate | Very High |
@@ -89,7 +89,7 @@ The interference analysis reports several interferences; however, these are not 
 | Focus Reliability | Not suitable for high magnification | Suitable for precision imaging |
 | Engineering Verdict | Acceptable for non-critical parts | Recommended for structural components |
 
-**B. Motor Bracket Analysis:**
+#### Motor Bracket Analysis:
 Still in progress (sip)
 
 ### Thermal Consideration
@@ -111,3 +111,16 @@ sip
 sip
 
 ## Electrical Documentation
+### System Architecture
+#### A. Power Distribution Architecture
+```mermaid
+flowchart TD
+    A[PSU 12V 8.5A] --> B[Fuse 8A]
+    B --> C[Elco]
+    C --> |12V 1.2A| D1[Driver X]
+    C --> |12V 1.2A| D2[Driver Y]
+    C --> |12V 1.2A| D3[Driver Z]
+    C --> |12V| D4[Buck Converter 5V]
+    D4 --> |5V 3A| E1[Raspberry Pi 4 Model B]
+    D4 --> |5V 0.2A| E2[Arduino Nano]
+```
