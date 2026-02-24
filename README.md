@@ -107,18 +107,19 @@ Still in progress (sip)
 </p>
 
 
-### Vibration Consideration
+
+### Vibration Consideration (ini entar bakal dari rumus gitu hubungan dengan Structural Rigidity)
 sip
 
 ### Drawing & Tolerance
 sip
 
-### Tolerance Stack Analysis
-sip
-
 ## Electrical Documentation
 ### System Architecture
-#### A. Power Distribution Architecture
+#### Theoritical Approach
+Fuse sizing rule
+
+#### Power Distribution Architecture
 ```mermaid
 flowchart TD
     A[PSU 12V 8.5A] --> B[Fuse 8A]
