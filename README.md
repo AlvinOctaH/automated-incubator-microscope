@@ -57,7 +57,7 @@ The interference analysis reports several interferences; however, these are not 
 - Gravity direction: Vertical (−Z axis)
 - Acceleration: 9.81 m/s²
 
-##### A. PLA-CF Configuration
+##### A. PLA-CF
 <p align="center">
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_1.png" width="500" height="400" />
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_02.png" width="500" height="400" />
@@ -82,21 +82,89 @@ The interference analysis reports several interferences; however, these are not 
 </p>
 
 - The displacement contour is dominated by dark blue regions.
-- Dark blue corresponds to near-zero displacement (≈ 0 mm, minimum value).
+- Dark blue corresponds to near-zero displacement (<1 µm, minimum value).
 - This indicates that the structure experiences negligible deformation under gravity-only loading.
 - The higher stiffness of Aluminum 6061 effectively resists bending caused by the self-weight of the system, including the stepper motor.
 
 ##### Summary of Stage Plate Analysis
+<div align="center">
+
+
 | Parameter | PLA-CF | Aluminum 6061 |
-|------------|------------|----------------|
+| :--- | :--- | :--- |
 | Stiffness | Moderate | Very High |
 | Max Deflection | ~54 µm | <1 µm |
 | Structural Rigidity | Exhibits global sagging | Negligible bending |
 | Focus Reliability | Not suitable for high magnification | Suitable for precision imaging |
 | Engineering Verdict | Acceptable for non-critical parts | Recommended for structural components |
 
+</div>
+
+
 #### Motor Bracket Analysis:
-Still in progress (sip)
+##### A. X Motor Bracket
+###### Previous Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_4.png" width="500" height="400" />
+</p>
+
+###### New Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_4.png" width="500" height="400" />
+</p>
+
+##### B. Y Motor Bracket
+###### Previous Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_4.png" width="500" height="400" />
+</p>
+
+###### New Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_4.png" width="500" height="400" />
+</p>
+
+##### C. Z Motor Bracket
+###### Previous Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_4.png" width="500" height="400" />
+</p>
+
+###### New Version
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_2.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_3.png" width="500" height="400" />
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_4.png" width="500" height="400" />
+</p>
+
+##### Summary of Motor Bracket Analysis
+<div align="center">
+
+| Parameter | PLA-CF | Aluminum 6061 |
+| :--- | :--- | :--- | :--- |
+| Stiffness | Moderate | Very High |
+| Max Deflection | ~54 µm | <1 µm |
+| Structural Rigidity | Exhibits global sagging | Negligible bending |
+| Focus Reliability | Not suitable for high magnification | Suitable for precision imaging |
+| Engineering Verdict | Acceptable for non-critical parts | Recommended for structural components |
+
+</div>
 
 ### Vibration Consideration
 sip
