@@ -156,8 +156,6 @@ The interference analysis reports several interferences; however, these are not 
 ##### Summary of Motor Bracket Analysis
 <div align="center">
 
-| Parameter | PLA-CF | Aluminum 6061 |
-
 </div>
 
 ### Vibration Consideration
@@ -183,12 +181,14 @@ Fuse sizing rule
 #### Power Distribution Architecture
 ```mermaid
 flowchart TD
-    A[PSU 12V 8.5A] --> B[Fuse 8A]
-    B --> C[Elco]
-    C --> |12V 1.2A| D1[Driver X]
-    C --> |12V 1.2A| D2[Driver Y]
-    C --> |12V 1.2A| D3[Driver Z]
-    C --> |12V| D4[Buck Converter 5V]
-    D4 --> |5V 3A| E1[Raspberry Pi 4 Model B]
-    D4 --> |5V 0.2A| E2[Arduino Nano]
+    A[IEC C13 to Type B] --> B[IEC C14 EMI suppression 10A 125/250VAC]
+    B --> C1[Mean Well LRS-100-12 12V 8.5A]
+    B --> C2[Mean Well RS-25-5 5V 5A]
+    C1 --> D1[Fuse 5A Slow Blow]
+    C2 --> D2[Fuse 5A Fast Blow]
+    D1 --> |12V 1.2A| E1[Driver X]
+    D1 --> |12V 1.2A| E2[Driver Y]
+    D1 --> |12V 1.2A| E3[Driver Z]
+    D2 --> |5V 3A| E4[Raspberry Pi 4 Model B]
+    D2 --> |5V 0.2A| E5[Arduino Nano]
 ```
