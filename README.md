@@ -181,31 +181,46 @@ The interference analysis reports several interferences; however, these are not 
 ```mermaid
 flowchart TD
 
-A[AC Mains, IEC C13 to Type B] --> B[Fuse]
+%% ================= AC FRONT END =================
+A[AC Mains 110/220VAC] --> B[Fuse 2A Slow Blow]
 B --> C[IEC C14 EMI Filter]
-C --> D[PSU LRS-100-12 PSU]
+C --> D[MEAN WELL LRS-100-12 12V 8.5A PSU]
 
-D --> E1[12V Motor BUS]
-D --> E2[LC Filter]
-E2 --> E3[Buck Converter 12V to 5V]
+%% ================= 12V PRIMARY BUS =================
+D --> FS1[Fuse 5A Motor Rail]
+D --> FS2[Fuse 3A Buck Pi]
+D --> FS3[Fuse 2A Buck Arduino]
 
-E1 --> F1[Stepper Driver X Y Z]
-F1 --> M1[Stepper Motors]
+%% ================= MOTOR DOMAIN =================
+FS1 --> M12V[12V Motor BUS]
+M12V --> SD1[DRV8825 Driver X + 100uF]
+M12V --> SD2[DRV8825 Driver Y + 100uF]
+M12V --> SD3[DRV8825 Driver Z + 100uF]
 
-E3 --> F2[5V Logic BUS]
-F2 --> G1[Raspberry Pi]
-F2 --> G2[Arduino Nano]
+SD1 --> SM1[Stepper Motor X]
+SD2 --> SM2[Stepper Motor Y]
+SD3 --> SM3[Stepper Motor Z]
 
-G1 <-->|UART| G2
-G2 -->|STEP DIR| F1
+%% ================= PI DOMAIN =================
+FS2 --> BP[BUCK 12 to 5V, Pi ONLY]
+BP --> PI5V[5V_PI]
+BP --> PIG[Pi_GND]
 
-%% STAR GROUND IMPLEMENTATION
-SG((PSU V- STAR POINT))
+PI5V --> G1[Raspberry Pi 4]
 
-SG --> MGND[Motor GND BUS]
-SG --> LGND[Logic GND BUS]
+%% ================= ARDUINO DOMAIN =================
+FS3 --> BA[BUCK 12 to 5V, Arduino ONLY]
+BA --> AR5V[5V_ARD]
+BA --> ARG[Arduino_GND]
 
-MGND --> F1
-LGND --> G1
-LGND --> G2
+AR5V --> G2[Arduino Nano]
+
+%% ================= UART ISOLATION =================
+G1 <-->|TX/RX| ISO[ADuM1201]
+ISO <-->|TX/RX| G2
+
+%% ================= MOTOR CONTROL =================
+G2 -->|STEP/DIR| SD1
+G2 -->|STEP/DIR| SD2
+G2 -->|STEP/DIR| SD3
 ```
