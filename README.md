@@ -223,4 +223,9 @@ ISO <-->|TX/RX| G2
 G2 -->|STEP/DIR| SD1
 G2 -->|STEP/DIR| SD2
 G2 -->|STEP/DIR| SD3
+
+%% ================= STAR GROUND =================
+PIG --> GD[GND PSU]
+ARG --> SG[Star Ground]
+D --> |V- PSU| SG
 ```
