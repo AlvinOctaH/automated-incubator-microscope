@@ -177,55 +177,50 @@ The interference analysis reports several interferences; however, these are not 
 #### Theoritical Approach
 (still in process)
 
-#### Power Distribution Architecture
+#### Electrical Architecture
 ```mermaid
 flowchart TD
 
 %% ================= AC FRONT END =================
-A[AC Mains 110/220VAC] --> B[Fuse 2A Slow Blow]
+A[AC Mains 110VAC] --> B[Fuse 3A Slow Blow]
 B --> C[IEC C14 EMI Filter]
-C --> D[MEAN WELL LRS-100-12 12V 8.5A PSU]
+C --> TB[AC Terminal Block Distribution]
 
-%% ================= 12V PRIMARY BUS =================
-D --> FS1[Fuse 5A Motor Rail]
-D --> FS2[Fuse 3A Buck Pi]
-D --> FS3[Fuse 2A Buck Arduino]
+%% ================= PSU DISTRIBUTION =================
+TB --> PSU1[MEAN WELL LRS-100-12 12V 8.5A]
+TB --> PSU2[MEAN WELL RD-35A 5V 4A]
 
 %% ================= MOTOR DOMAIN =================
-FS1 --> M12V[12V Motor BUS]
-M12V --> SD1[DRV8825 Driver X + 100uF]
-M12V --> SD2[DRV8825 Driver Y + 100uF]
-M12V --> SD3[DRV8825 Driver Z + 100uF]
+PSU1 --> FM[Fuse 5A Motor Rail]
+FM --> M12V[12V Motor BUS]
 
-SD1 --> SM1[Stepper Motor X]
-SD2 --> SM2[Stepper Motor Y]
-SD3 --> SM3[Stepper Motor Z]
+M12V --> SD1[DRV8825 X + 100uF + 0.1uF + TVS 18V]
+M12V --> SD2[DRV8825 Y + 100uF + 0.1uF + TVS 18V]
+M12V --> SD3[DRV8825 Z + 100uF + 0.1uF + TVS 18V]
 
-%% ================= PI DOMAIN =================
-FS2 --> BP[BUCK 12 to 5V, Pi ONLY]
-BP --> PI5V[5V_PI]
-BP --> PIG[Pi_GND]
+SD1 --> SM1[Stepper X 1.2A]
+SD2 --> SM2[Stepper Y 1.2A]
+SD3 --> SM3[Stepper Z 1.2A]
 
-PI5V --> G1[Raspberry Pi 4]
+%% ================= LOGIC DOMAIN =================
+PSU2 --> FL[Fuse 3A Logic Rail]
+FL --> L5V[5V_LOGIC BUS]
 
-%% ================= ARDUINO DOMAIN =================
-FS3 --> BA[BUCK 12 to 5V, Arduino ONLY]
-BA --> AR5V[5V_ARD]
-BA --> ARG[Arduino_GND]
+L5V --> |Polyfuse 2A + 470uF Bulk| PI[Raspberry Pi 3A+]
+L5V --> ARD[Arduino Nano]
 
-AR5V --> G2[Arduino Nano]
+%% ================= LEVEL SHIFT =================
+PI <-->|3.3V TX/RX| LS[Logic Level Shifter]
+ARD <-->|5V TX/RX| LS
 
-%% ================= UART ISOLATION =================
-G1 <-->|TX/RX| ISO[ADuM1201]
-ISO <-->|TX/RX| G2
+%% ================= CONTROL =================
+ARD -->|STEP/DIR| SD1
+ARD -->|STEP/DIR| SD2
+ARD -->|STEP/DIR| SD3
 
-%% ================= MOTOR CONTROL =================
-G2 -->|STEP/DIR| SD1
-G2 -->|STEP/DIR| SD2
-G2 -->|STEP/DIR| SD3
-
-%% ================= STAR GROUND =================
-PIG --> GD[GND PSU]
-ARG --> SG[Star Ground]
-D --> |V- PSU| SG
+%% ================= GROUND STRATEGY =================
+PSU1 --> SG[Star Ground Point]
+PSU2 --> SG
+M12V --> SG
+L5V --> SG
 ```
