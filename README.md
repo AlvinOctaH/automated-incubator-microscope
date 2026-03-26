@@ -222,6 +222,117 @@ Thermal images of each stepper motor and the well plate under operating conditio
 
 ---
 
+### Imaging Calculation
+#### Known Variables
+ 
+| Variable | Symbol | Value | Source |
+| :--- | :--- | :--- | :--- |
+| Nominal tube length | L₀ | 160 mm | Objective spec |
+| Nominal magnification | M₀ | 10x | Objective spec |
+| Sensor width | Sw | 6.287 mm | IMX477 datasheet |
+| Sensor height | Sh | 4.712 mm | IMX477 datasheet |
+| Sensor resolution (H × V) | Rw × Rh | 4056 × 3040 px | IMX477 datasheet |
+| Pixel size | p | 1.55 × 1.55 µm | IMX477 datasheet |
+ 
+> **Verification:** Sensor size can be independently verified as:
+> `Sw = p × Rw = 1.55µm × 4056 = 6.287mm` ✅
+ 
+#### Formulas
+ 
+**1. Actual Magnification at a Given Tube Length**
+ 
+When tube length deviates from nominal, magnification scales linearly:
+ 
+$$M_{actual} = M_0 \times \frac{L_{actual}}{L_0}$$
+ 
+> ⚠️ This formula is an approximation valid at the nominal tube length (160mm). Any deviation from the nominal tube length introduces spherical aberrations and degrades image quality ([Evident Scientific / Olympus MicroscopyU](https://evidentscientific.com/en/microscope-resource/knowledge-hub/anatomy/tubelength)). The degree of degradation increases with deviation — empirical validation is required for non-nominal tube lengths.
+ 
+**2. Field of View at a Given Magnification**
+ 
+FOV is calculated separately for horizontal and vertical axes:
+ 
+$$FOV_{horizontal} = \frac{S_w}{M_{actual}}$$
+ 
+$$FOV_{vertical} = \frac{S_h}{M_{actual}}$$
+ 
+**3. Limiting FOV (for circular samples like well plates)**
+ 
+Since the sensor is rectangular but well plates are circular, the **vertical FOV is the limiting dimension** (smaller side):
+ 
+$$FOV_{limiting} = FOV_{vertical} = \frac{S_h}{M_{actual}}$$
+ 
+If `FOV_vertical ≥ well diameter`, then the entire well fits in frame.
+ 
+**4. Required Tube Length for a Target FOV**
+ 
+To find the tube length needed to achieve a specific FOV:
+ 
+$$L_{target} = L_0 \times \frac{FOV_{ref}}{FOV_{target}}$$
+ 
+Where `FOV_ref` is the FOV at the reference tube length (L₀). Or directly from sensor size:
+ 
+$$L_{target} = \frac{S_h \times L_0}{M_0 \times FOV_{target}}$$
+ 
+**5. Empirical Scale (if actual bead size is known)**
+ 
+If the real diameter of a microbead is known from its datasheet:
+ 
+$$\mu m/pixel = \frac{d_{bead,real}}{d_{bead,pixel}}$$
+ 
+$$FOV_{horizontal} = \frac{d_{bead,real}}{d_{bead,pixel}} \times R_w$$
+ 
+$$FOV_{vertical} = \frac{d_{bead,real}}{d_{bead,pixel}} \times R_h$$
+ 
+$$M_{actual} = \frac{S_w}{FOV_{horizontal}} \times 1000$$
+ 
+> Note: multiply by 1000 to reconcile units (Sw in mm, FOV in µm).
+ 
+**6. Empirical FOV Ratio (without knowing bead size)**
+ 
+If bead size is unknown but the same beads are imaged at two different tube lengths, the FOV ratio can be derived purely from pixel measurements:
+ 
+$$\frac{FOV_1}{FOV_2} = \frac{L_2}{L_1} = \frac{d_{bead,px,2}}{d_{bead,px,1}}$$
+ 
+This allows prediction of tube length for a target FOV using only pixel measurements, without knowing the real bead size.
+ 
+#### Worked Example — Well Plate 96
+ 
+**Target:** Image an entire single well of a 96-well plate.  
+**Well diameter:** 9 mm = 9000 µm
+ 
+**Step 1 — FOV at reference (160mm, 10x):**
+ 
+$$FOV_{vertical,160} = \frac{4.712\ \text{mm}}{10} = 0.4712\ \text{mm} = 471.2\ \mu\text{m}$$
+ 
+**Step 2 — Required tube length:**
+ 
+$$L_{target} = 160 \times \frac{471.2}{9000} \approx 8.4\ \text{mm}$$
+ 
+**Step 3 — Magnification at that tube length:**
+ 
+$$M_{actual} = 10 \times \frac{8.4}{160} = 0.525\text{x}$$
+ 
+**Step 4 — Verify FOV:**
+ 
+$$FOV_{vertical} = \frac{4.712\ \text{mm}}{0.525} = 8.97\ \text{mm} \approx 9\ \text{mm}\ ✅$$
+ 
+$$FOV_{horizontal} = \frac{6.287\ \text{mm}}{0.525} = 11.97\ \text{mm}$$
+ 
+> The well fits fully in frame vertically. Horizontal FOV is wider (11.97mm), providing extra margin.
+ 
+#### Summary Table
+ 
+| Tube Length | Magnification | FOV Horizontal | FOV Vertical | Fits 9mm well? |
+| :--- | :--- | :--- | :--- | :--- |
+| 160 mm | 10x | 628.7 µm | 471.2 µm | ❌ |
+| 130 mm | 8.125x | 774 µm | 580 µm | ❌ |
+| 9 mm | 0.5625x | 11.18 mm | 8.38 mm | ⚠️ nearly |
+| **8.4 mm** | **0.525x** | **11.97 mm** | **9.00 mm** | **✅** |
+
+
+
+---
+
 ## ⚡ Electrical Documentation
 
 ### System Architecture
