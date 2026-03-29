@@ -89,52 +89,141 @@ $$
 
 ### 3. Material Comparison
 
-Static load analysis was performed on the stage plate under gravity only (−Z, 9.81 m/s²). Two materials were evaluated: **PLA-CF** and **Aluminum 6061**.
+Static load analysis was performed on the stage plate under gravity only
+(−Z, 9.81 m/s²). Three materials were evaluated: **PLA-CF**, **PLA-Basic**,
+and **Aluminum 6061**.
+
+**Displacement** shows how much the structure physically deforms under load —
+lower values indicate a stiffer, more stable platform, which is critical for
+maintaining focus consistency during imaging.
+
+**Von Mises Stress** shows the internal stress distribution across the
+structure. Results dominated by blue contour across all three materials
+indicate that stress levels remain well within safe limits throughout the
+structural body under gravity-only loading.
+
+> ⚠️ Note: Peak displacement values include contribution from motor assembly
+> motion. Structural frame comparison is best assessed from the color contour
+> distribution in the images above.
+
+#### Material Properties
+
+| Property | PLA-CF | PLA-Basic | Aluminum 6061 |
+| :--- | :---: | :---: | :---: |
+| Young Modulus (MPa) | 2790 | 2750 | Default Autodesk Inventor |
+| Poisson Ratio | 0.33 | 0.36 | Default Autodesk Inventor |
+| Shear Modulus (MPa) | 1048 | 1010 | Default Autodesk Inventor |
+| Yield Strength (MPa) | 38 | 35 | Default Autodesk Inventor |
 
 #### A. PLA-CF
 
+<details>
+<summary>Displacement</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_02.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/PLA-CF_4.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_4.png" width="500" height="400"/>
 </p>
+</details>
 
-- Displacement contour dominated by **green regions** (~0.035–0.052 mm range)
-- Deformation concentrated at upper stage plate and stepper motor mounting area
-- Stepper motor self-weight is the dominant contributor to deflection
-- Global sagging observed due to lower elastic modulus of PLA-CF
-
-#### B. Aluminum 6061
-
+<details>
+<summary>Von Mises Stress</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Alumnium_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Aluminum_4.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_4.png" width="500" height="400"/>
 </p>
+</details>
 
-- Displacement contour dominated by **dark blue regions** (<1 µm)
+- Max displacement: **0.089 mm**
+- Max von Mises stress: **51.42 MPa** — stress distribution dominated by
+  blue contour, structure is safe throughout
+- Carbon fiber reinforcement improves stiffness compared to PLA-Basic
+
+#### B. PLA-Basic
+
+<details>
+<summary>Displacement</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_4.png" width="500" height="400"/>
+</p>
+</details>
+
+<details>
+<summary>Von Mises Stress</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_4.png" width="500" height="400"/>
+</p>
+</details>
+
+- Max displacement: **0.11 mm** — highest among all three materials
+- Max von Mises stress: **68.52 MPa** — stress distribution dominated by
+  blue contour, structure is safe throughout
+- Higher deformation due to absence of carbon fiber reinforcement
+
+#### C. Aluminum 6061
+
+<details>
+<summary>Displacement</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_4.png" width="500" height="400"/>
+</p>
+</details>
+
+<details>
+<summary>Von Mises Stress</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_4.png" width="500" height="400"/>
+</p>
+</details>
+
+- Max displacement: **~0.017 mm** — lowest among all three materials
+- Max von Mises stress: **50.21 MPa** — stress distribution dominated by
+  blue contour, structure is safe throughout
 - Negligible deformation under gravity-only loading
-- High stiffness effectively resists bending from stepper motor self-weight
 
 #### Comparison Summary
 
 <div align="center">
 
-| Parameter | PLA-CF | Aluminum 6061 |
-| :--- | :---: | :---: |
-| Stiffness | Moderate | Very High |
-| Max Deflection | ~54 µm | <1 µm |
-| Structural Rigidity | Global sagging | Negligible bending |
-| Focus Reliability | ⚠️ Not suitable for high magnification | ✅ Suitable for precision imaging |
-| Verdict | Acceptable for non-critical parts | Recommended for structural parts |
+| Parameter | PLA-Basic | PLA-CF | Aluminum 6061 |
+| :--- | :---: | :---: | :---: |
+| Max Displacement | 0.11 mm | 0.089 mm | ~0.017 mm |
+| Max Von Mises Stress | 68.52 MPa | 51.42 MPa | 50.21 MPa |
+| Stress Distribution | ✅ Safe (blue) | ✅ Safe (blue) | ✅ Safe (blue) |
+| Stiffness | Low | Moderate | Very High |
+| Cost | Low | Medium | High |
+| Printability | ✅ Easy | ✅ Easy | ❌ Requires machining |
+| Verdict | ⚠️ Acceptable | ✅ Selected | Reference only |
 
 </div>
 
 #### Insight
 
-PLA-CF was selected as the primary material due to significantly lower cost and ease of reprinting during design iteration. Although maximum deflection (~54 µm) is higher than Aluminum 6061 (<1 µm), this deformation remains well below the threshold that would affect imaging quality at the magnification used in this system. For a research prototype requiring frequent mechanical revisions, PLA-CF offers the best balance between structural adequacy and development speed.
+All three materials show safe stress distribution under gravity-only loading,
+with von Mises stress contours dominated by blue across the entire structural
+body. The primary differentiator between materials is displacement. Aluminum
+6061 offers the lowest displacement (~0.017 mm) and highest stiffness, but
+requires CNC machining which significantly increases cost and lead time for
+an iterative research prototype. PLA-Basic, while structurally safe, shows
+the highest displacement (0.11 mm) due to its lower stiffness without carbon
+fiber reinforcement. PLA-CF was selected as the optimal material — offering
+lower displacement than PLA-Basic (0.089 mm) with the same ease of 3D
+printing, making it the most practical choice for this stage of development.
 
 ---
 
