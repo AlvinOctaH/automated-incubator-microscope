@@ -35,6 +35,14 @@ An automated XYZ microscope stage designed for continuous 24/7 brightfield imagi
 ## 🔩 Mechanical
 
 ### 1. Components & Specs
+| Component | Specification | Quantity |
+| :--- | :--- | :---: |
+| Stepper Motor | NEMA17 42-40, 1.8°/step, ~40 N·cm holding torque | 3 |
+| Lead Screw | T8, 1 mm pitch | 3 |
+| Anti-backlash Nut | 8 mm | 3 |
+| Flexible Coupler | 5 mm to 8 mm | 3 |
+| Linear Rail | MGN12H | 3 |
+| Aluminum Extrusion | Alpro, various lengths | — |
 
 ### 2. Motion Calculation
 
