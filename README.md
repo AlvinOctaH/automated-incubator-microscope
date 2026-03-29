@@ -441,16 +441,7 @@ The schematic is organized into 4 sheets:
 
 ### 1. Architecture
 
-```
-software/
-├── firmware/           # Arduino Nano — step/dir motor control
-│   └── main.ino
-├── control/            # Raspberry Pi — high-level control & GUI
-│   ├── main.py
-│   └── serial_comm.py
-└── calibration/        # Stage calibration scripts
-    └── calibrate.py
-```
+> 🚧 **In progress**
 
 ### 2. GUI
 
