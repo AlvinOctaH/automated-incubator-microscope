@@ -6,9 +6,9 @@
 ![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%20%7C%20Arduino-red?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-**A custom 3-axis automated linear stage for microscopy applications, developed at NCKU.**
+**A custom 3-axis automated microscope stage for continuous long-term live-cell imaging, developed at NCKU.**
 
-[Overview](#overview) · [Mechanical](#-mechanical-documentation) · [Electrical](#-electrical-documentation) · [Getting Started](#-getting-started) · [Contributing](#-contributing)
+[Overview](#overview) · [Mechanical](#-mechanical) · [Electrical](#-electrical) · [Software](#-software)
 
 </div>
 
@@ -16,22 +16,27 @@
 
 ## Overview
 
-This project documents the development of a custom motorized XYZ linear stage integrated with an incubator microscope setup. The system enables automated sample positioning for long-term live-cell imaging experiments.
+An automated XYZ microscope stage designed for continuous 24/7 brightfield imaging of biological samples (spheroids) in wellplates. Built around a Raspberry Pi 4 and Arduino Nano V3, the system enables unattended long-term live-cell imaging with motorized focus and sample positioning.
 
 | Feature | Specification |
 | :--- | :--- |
 | Axes | X, Y, Z (independent translational) |
 | Linear Resolution | 5 µm/step (full-step) |
-| Travel (Z) | 9 mm |
+| Travel (Z) | TBD (To Be Determined) |
 | Motor Driver | DRV8825 |
-| Controller | Arduino Nano + Raspberry Pi 3A+ |
-| Primary Material | PLA-CF / Aluminum 6061 |
+| Controller | Arduino Nano V3 + Raspberry Pi 4 |
+| Camera | Raspberry Pi HQ Camera (IMX477) |
+| Target Sample | 96-well plate |
+| Primary Material | PLA-CF |
+| Operating Mode | Continuous 24/7 |
 
 ---
 
-## 🔩 Mechanical Documentation
+## 🔩 Mechanical
 
-### Kinematic & Motion Analysis
+### 1. Components & Specs
+
+### 2. Motion Calculation
 
 #### Degrees of Freedom (DOF)
 
@@ -74,7 +79,7 @@ $$
 
 ---
 
-### Structural Rigidity
+### 3. Material Comparison
 
 Static load analysis was performed on the stage plate under gravity only (−Z, 9.81 m/s²). Two materials were evaluated: **PLA-CF** and **Aluminum 6061**.
 
@@ -105,7 +110,7 @@ Static load analysis was performed on the stage plate under gravity only (−Z, 
 - Negligible deformation under gravity-only loading
 - High stiffness effectively resists bending from stepper motor self-weight
 
-#### Material Comparison Summary
+#### Comparison Summary
 
 <div align="center">
 
@@ -115,15 +120,19 @@ Static load analysis was performed on the stage plate under gravity only (−Z, 
 | Max Deflection | ~54 µm | <1 µm |
 | Structural Rigidity | Global sagging | Negligible bending |
 | Focus Reliability | ⚠️ Not suitable for high magnification | ✅ Suitable for precision imaging |
-| Verdict | Acceptable for non-critical parts | **Recommended for structural parts** |
+| Verdict | Acceptable for non-critical parts | Recommended for structural parts |
 
 </div>
 
+#### Insight
+
+PLA-CF was selected as the primary material due to significantly lower cost and ease of reprinting during design iteration. Although maximum deflection (~54 µm) is higher than Aluminum 6061 (<1 µm), this deformation remains well below the threshold that would affect imaging quality at the magnification used in this system. For a research prototype requiring frequent mechanical revisions, PLA-CF offers the best balance between structural adequacy and development speed.
+
 ---
 
-### Motor Bracket Analysis
+### 4. Design Iteration
 
-Structural analysis was conducted on motor brackets for all three axes. Each bracket was evaluated in two design iterations.
+Structural analysis was conducted on motor brackets for all three axes. Each bracket was evaluated across two design iterations.
 
 #### A. X Motor Bracket
 
@@ -191,40 +200,14 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 </p>
 </details>
 
-> 📝 **Motor Bracket Summary:** *(to be completed — add max stress, safety factor, and design change rationale for each axis)*
+> 📝 **TBD:** Add max stress, safety factor, and design change rationale for each axis.
 
 ---
 
-### Vibration Consideration
+### 5. Imaging Calculation
 
-> 🚧 **In progress** — modal analysis and vibration isolation strategy to be documented.
-
----
-
-### Thermal Consideration
-
-Thermal images of each stepper motor and the well plate under operating conditions:
-
-<p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20X.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Y.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Z.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200"/>
-</p>
-
-> 📝 **Add here:** peak temperatures recorded, acceptable operating range, any heat mitigation measures taken.
-
----
-
-### Drawing & Tolerance
-
-> 🚧 **In progress** — engineering drawings and GD&T specifications to be added.
-
----
-
-### Imaging Calculation
 #### Known Variables
- 
+
 | Variable | Symbol | Value | Source |
 | :--- | :--- | :--- | :--- |
 | Nominal tube length | L₀ | 160 mm | Objective spec |
@@ -233,95 +216,47 @@ Thermal images of each stepper motor and the well plate under operating conditio
 | Sensor height | Sh | 4.712 mm | IMX477 datasheet |
 | Sensor resolution (H × V) | Rw × Rh | 4056 × 3040 px | IMX477 datasheet |
 | Pixel size | p | 1.55 × 1.55 µm | IMX477 datasheet |
- 
-> **Verification:** Sensor size can be independently verified as:
-> `Sw = p × Rw = 1.55µm × 4056 = 6.287mm` ✅
- 
+
+> **Verification:** `Sw = p × Rw = 1.55µm × 4056 = 6.287mm` ✅
+
 #### Formulas
- 
+
 **1. Actual Magnification at a Given Tube Length**
- 
-When tube length deviates from nominal, magnification scales linearly:
- 
+
 $$M_{actual} = M_0 \times \frac{L_{actual}}{L_0}$$
- 
-> ⚠️ This formula is an approximation valid at the nominal tube length (160mm). Any deviation from the nominal tube length introduces spherical aberrations and degrades image quality ([Evident Scientific / Olympus MicroscopyU](https://evidentscientific.com/en/microscope-resource/knowledge-hub/anatomy/tubelength)). The degree of degradation increases with deviation — empirical validation is required for non-nominal tube lengths.
- 
-**2. Field of View at a Given Magnification**
- 
-FOV is calculated separately for horizontal and vertical axes:
- 
-$$FOV_{horizontal} = \frac{S_w}{M_{actual}}$$
- 
-$$FOV_{vertical} = \frac{S_h}{M_{actual}}$$
- 
-**3. Limiting FOV (for circular samples like well plates)**
- 
-Since the sensor is rectangular but well plates are circular, the **vertical FOV is the limiting dimension** (smaller side):
- 
+
+> ⚠️ This formula is an approximation valid at the nominal tube length (160mm). Any deviation introduces spherical aberrations — empirical validation is required for non-nominal tube lengths.
+
+**2. Field of View**
+
+$$FOV_{horizontal} = \frac{S_w}{M_{actual}} \qquad FOV_{vertical} = \frac{S_h}{M_{actual}}$$
+
+**3. Limiting FOV (circular samples)**
+
 $$FOV_{limiting} = FOV_{vertical} = \frac{S_h}{M_{actual}}$$
- 
-If `FOV_vertical ≥ well diameter`, then the entire well fits in frame.
- 
+
 **4. Required Tube Length for a Target FOV**
- 
-To find the tube length needed to achieve a specific FOV:
- 
-$$L_{target} = L_0 \times \frac{FOV_{ref}}{FOV_{target}}$$
- 
-Where `FOV_ref` is the FOV at the reference tube length (L₀). Or directly from sensor size:
- 
+
 $$L_{target} = \frac{S_h \times L_0}{M_0 \times FOV_{target}}$$
- 
-**5. Empirical Scale (if actual bead size is known)**
- 
-If the real diameter of a microbead is known from its datasheet:
- 
-$$\mu m/pixel = \frac{d_{bead,real}}{d_{bead,pixel}}$$
- 
-$$FOV_{horizontal} = \frac{d_{bead,real}}{d_{bead,pixel}} \times R_w$$
- 
-$$FOV_{vertical} = \frac{d_{bead,real}}{d_{bead,pixel}} \times R_h$$
- 
-$$M_{actual} = \frac{S_w}{FOV_{horizontal}} \times 1000$$
- 
-> Note: multiply by 1000 to reconcile units (Sw in mm, FOV in µm).
- 
-**6. Empirical FOV Ratio (without knowing bead size)**
- 
-If bead size is unknown but the same beads are imaged at two different tube lengths, the FOV ratio can be derived purely from pixel measurements:
- 
+
+**5. Empirical Scale (known bead size)**
+
+$$\mu m/pixel = \frac{d_{bead,real}}{d_{bead,pixel}} \qquad M_{actual} = \frac{S_w}{FOV_{horizontal}} \times 1000$$
+
+**6. Empirical FOV Ratio (unknown bead size)**
+
 $$\frac{FOV_1}{FOV_2} = \frac{L_2}{L_1} = \frac{d_{bead,px,2}}{d_{bead,px,1}}$$
- 
-This allows prediction of tube length for a target FOV using only pixel measurements, without knowing the real bead size.
- 
-#### Worked Example — Well Plate 96
- 
-**Target:** Image an entire single well of a 96-well plate.  
-**Well diameter:** 9 mm = 9000 µm
- 
-**Step 1 — FOV at reference (160mm, 10x):**
- 
-$$FOV_{vertical,160} = \frac{4.712\ \text{mm}}{10} = 0.4712\ \text{mm} = 471.2\ \mu\text{m}$$
- 
-**Step 2 — Required tube length:**
- 
-$$L_{target} = 160 \times \frac{471.2}{9000} \approx 8.4\ \text{mm}$$
- 
-**Step 3 — Magnification at that tube length:**
- 
-$$M_{actual} = 10 \times \frac{8.4}{160} = 0.525\text{x}$$
- 
-**Step 4 — Verify FOV:**
- 
-$$FOV_{vertical} = \frac{4.712\ \text{mm}}{0.525} = 8.97\ \text{mm} \approx 9\ \text{mm}\ ✅$$
- 
-$$FOV_{horizontal} = \frac{6.287\ \text{mm}}{0.525} = 11.97\ \text{mm}$$
- 
-> The well fits fully in frame vertically. Horizontal FOV is wider (11.97mm), providing extra margin.
- 
-#### Summary Table
- 
+
+#### Worked Example — 96-well Plate
+
+**Target:** Image an entire single well (diameter = 9 mm)
+
+$$FOV_{vertical,160} = \frac{4.712}{10} = 0.4712\ \text{mm} = 471.2\ \mu\text{m}$$
+
+$$L_{target} = 160 \times \frac{471.2}{9000} \approx 8.4\ \text{mm} \quad \Rightarrow \quad M_{actual} = 10 \times \frac{8.4}{160} = 0.525\text{x}$$
+
+$$FOV_{vertical} = \frac{4.712}{0.525} \approx 9.0\ \text{mm}\ ✅ \qquad FOV_{horizontal} = \frac{6.287}{0.525} = 11.97\ \text{mm}$$
+
 | Tube Length | Magnification | FOV Horizontal | FOV Vertical | Fits 9mm well? |
 | :--- | :--- | :--- | :--- | :--- |
 | 160 mm | 10x | 628.7 µm | 471.2 µm | ❌ |
@@ -329,122 +264,93 @@ $$FOV_{horizontal} = \frac{6.287\ \text{mm}}{0.525} = 11.97\ \text{mm}$$
 | 9 mm | 0.5625x | 11.18 mm | 8.38 mm | ⚠️ nearly |
 | **8.4 mm** | **0.525x** | **11.97 mm** | **9.00 mm** | **✅** |
 
+---
 
+### 6. Thermal Consideration
+
+Thermal images of each stepper motor and the well plate under 24/7 operating conditions:
+
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20X.jpeg" width="200"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Y.jpeg" width="200"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Z.jpeg" width="200"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200"/>
+</p>
+
+> 📝 **TBD:** Add peak temperatures per motor, wellplate temperature, and acceptable operating range.
 
 ---
 
-## ⚡ Electrical Documentation
+### 7. Engineering Drawing
 
-### System Architecture
+> 🚧 **In progress** — engineering drawings and GD&T specifications to be added.
 
-#### Electrical Block Diagram
+---
 
-```mermaid
-flowchart TD
+### 8. Mechanical Insight
 
-%% ================= AC FRONT END =================
-A[AC Mains 110VAC] --> B[Fuse 3A Slow Blow]
-B --> C[IEC C14 EMI Filter]
-C --> TB[AC Terminal Block Distribution]
+> 📝 **TBD:** Add final design decisions and rationale per subsection.
 
-%% ================= PSU DISTRIBUTION =================
-TB --> PSU1[MEAN WELL LRS-100-12 12V 8.5A]
-TB --> PSU2[MEAN WELL RD-35A 5V 4A]
+---
 
-%% ================= MOTOR DOMAIN =================
-PSU1 --> FM[Fuse 5A Motor Rail]
-FM --> M12V[12V Motor BUS]
+## ⚡ Electrical
 
-M12V --> SD1[DRV8825 X + 100uF + 0.1uF + TVS 18V]
-M12V --> SD2[DRV8825 Y + 100uF + 0.1uF + TVS 18V]
-M12V --> SD3[DRV8825 Z + 100uF + 0.1uF + TVS 18V]
-
-SD1 --> SM1[Stepper X 1.2A]
-SD2 --> SM2[Stepper Y 1.2A]
-SD3 --> SM3[Stepper Z 1.2A]
-
-%% ================= LOGIC DOMAIN =================
-PSU2 --> FL[Fuse 3A Logic Rail]
-FL --> L5V[5V_LOGIC BUS]
-
-L5V --> |Polyfuse 2A + 470uF Bulk| PI[Raspberry Pi 3A+]
-L5V --> ARD[Arduino Nano]
-
-%% ================= LEVEL SHIFT =================
-PI <-->|3.3V TX/RX| LS[Logic Level Shifter]
-ARD <-->|5V TX/RX| LS
-
-%% ================= CONTROL =================
-ARD -->|STEP/DIR| SD1
-ARD -->|STEP/DIR| SD2
-ARD -->|STEP/DIR| SD3
-
-%% ================= GROUND STRATEGY =================
-PSU1 --> SG[Star Ground Point]
-PSU2 --> SG
-M12V --> SG
-L5V --> SG
-```
-
-#### Component List
+### 1. Components & BOM
 
 | Component | Part Number | Specification | Quantity |
 | :--- | :--- | :--- | :---: |
-| PSU (Motor) | MEAN WELL LRS-100-12 | 12V, 8.5A | 1 |
-| PSU (Logic) | MEAN WELL RD-35A | 5V, 4A | 1 |
-| Motor Driver | DRV8825 | 1/32 microstepping | 3 |
-| Stepper Motor | — | 1.2A, 200 steps/rev | 3 |
-| MCU | Arduino Nano | 5V logic | 1 |
-| SBC | Raspberry Pi 3A+ | 3.3V logic | 1 |
-| Level Shifter | — | 3.3V ↔ 5V | 1 |
-| EMI Filter | IEC C14 | — | 1 |
+| PSU (Motor) | Meanwell LRS-100-12 | 12V, 8.3A | 1 |
+| PSU (Logic) | Meanwell LRS-35-5 | 5V, 7A | 1 |
+| Motor Driver | DRV8825 | Up to 1/32 microstepping | 3 |
+| Stepper Motor | NEMA14 42-40 | 1.2A, 200 steps/rev | 3 |
+| MCU | Arduino Nano V3 | ATmega328P, 5V logic | 1 |
+| SBC | Raspberry Pi 4 | 3.3V logic | 1 |
+| Level Shifter | Bidirectional LLC | 3.3V ↔ 5V | 1 |
+| AC Input | IEC C14 Receptacle | — | 1 |
+| Fuse (AC) | — | 3A Slow Blow | 1 |
+| Fuse (Motor) | — | 5A | 1 |
+| Polyfuse (Logic) | — | 3A Resettable | 1 |
 
-> 📝 **Theoretical approach section:** *(to be completed — add signal flow description, control loop explanation, communication protocol)*
+### 2. Schematic
+
+> 📝 **TBD:** Add schematic images here.
+
+### 3. Calculations
+
+> 📝 **TBD:** Add power budget, current calculations, and signal flow description.
+
+### 4. Electrical Insight
+
+> 📝 **TBD:** Add design decisions — e.g. dual PSU rationale, ground separation strategy, driver protection.
 
 ---
 
-## 💻 Software Documentation
+## 💻 Software
 
-> 🚧 **In progress** — firmware (Arduino) and control software (Raspberry Pi) to be documented.
-
-### Planned Structure
+### 1. Architecture
 
 ```
 software/
-├── firmware/           # Arduino Nano — step/dir control
+├── firmware/           # Arduino Nano — step/dir motor control
 │   └── main.ino
-├── control/            # Raspberry Pi — high-level control
+├── control/            # Raspberry Pi — high-level control & GUI
 │   ├── main.py
 │   └── serial_comm.py
 └── calibration/        # Stage calibration scripts
     └── calibrate.py
 ```
 
----
+### 2. GUI
 
-## 🚀 Getting Started
+> 🚧 **In progress**
 
-> 🚧 **In progress** — assembly guide and setup instructions to be added.
+### 3. Data Management
 
-### Prerequisites
+> 🚧 **In progress**
 
-- Arduino IDE ≥ 2.x
-- Python ≥ 3.9
-- Raspberry Pi OS (64-bit)
+### 4. Software Insight
 
-### Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/AlvinOctaH/Automation-Incubator-Microscope.git
-cd Automation-Incubator-Microscope
-
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Flash Arduino firmware
-# Open firmware/main.ino in Arduino IDE and upload to Nano
-```
+> 📝 **TBD:** Add design decisions — e.g. RPi vs Arduino task separation, communication protocol, data pipeline.
 
 ---
 
@@ -462,38 +368,3 @@ Automation-Incubator-Microscope/
 ├── docs/                   # Additional documentation
 └── README.md
 ```
-
----
-
-## 🗺️ Roadmap
-
-- [x] Kinematic & motion analysis
-- [x] Structural rigidity analysis (stage plate)
-- [x] Motor bracket FEA (X, Y, Z)
-- [x] Electrical architecture diagram
-- [ ] Vibration analysis
-- [ ] Engineering drawings & tolerances
-- [ ] Firmware documentation
-- [ ] Control software documentation
-- [ ] Assembly guide
-- [ ] Calibration procedure
-
----
-
-## 👤 Author
-
-**Alvin Octa H**  
-Internship @ National Cheng Kung University (NCKU)  
-Department of *(your department)*  
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-<sub>Built with ☕ during internship at NCKU · Taiwan</sub>
-</div>
