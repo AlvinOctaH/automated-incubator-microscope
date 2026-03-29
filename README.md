@@ -392,25 +392,40 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
 
 ## ⚡ Electrical
 
-### 1. Components & BOM
+### 1. Components & Specs
 
 | Component | Part Number | Specification | Quantity |
 | :--- | :--- | :--- | :---: |
-| PSU (Motor) | Meanwell LRS-100-12 | 12V, 8.3A | 1 |
 | PSU (Logic) | Meanwell LRS-35-5 | 5V, 7A | 1 |
-| Motor Driver | DRV8825 | Up to 1/32 microstepping | 3 |
-| Stepper Motor | NEMA14 42-40 | 1.2A, 200 steps/rev | 3 |
+| PSU (Motor) | Meanwell LRS-100-12 | 12V, 8.3A | 1 |
+| Stepper Motor | NEMA17 42-40 | 1.8°/step, 200 steps/rev | 3 |
+| Motor Driver | DRV8825 (Pololu Breakout) | Up to 1/32 microstepping | 3 |
+| TVS Diode | D_TVS 18V | Motor back-EMF protection | 3 |
 | MCU | Arduino Nano V3 | ATmega328P, 5V logic | 1 |
 | SBC | Raspberry Pi 4 | 3.3V logic | 1 |
-| Level Shifter | Bidirectional LLC | 3.3V ↔ 5V | 1 |
+| Level Shifter | Bidirectional LLC | 5V ↔ 3.3V | 1 |
 | AC Input | IEC C14 Receptacle | — | 1 |
 | Fuse (AC) | — | 3A Slow Blow | 1 |
 | Fuse (Motor) | — | 5A | 1 |
 | Polyfuse (Logic) | — | 3A Resettable | 1 |
+| Capacitor | C_Polarized | 100µF, decoupling per motor driver | 3 |
+| Capacitor | C_Polarized | 470µF, logic rail bulk | 1 |
+| Capacitor | C | 0.1µF, decoupling | 7 |
+
+---
 
 ### 2. Schematic
 
-> 📝 **TBD:** Add schematic images here.
+[📄 View Full Schematic (PDF)](./electrical/elec_sch.pdf)
+
+The schematic is organized into 4 sheets:
+
+| Sheet | Title | Description |
+| :--- | :--- | :--- |
+| 1 | System Overview | Top-level hierarchy showing how all sheets interconnect |
+| 2 | AC Input & Primary Power | Converts 220V AC mains to regulated 5V and 12V DC rails, with slow-blow fusing and earth protective ground |
+| 3 | 12V Motor Power Domain | Three independent DRV8825 motor driver circuits with TVS back-EMF protection and bulk capacitors, driving NEMA17 stepper motors for X, Y, and Z axes |
+| 4 | 5V Logic Domain | Raspberry Pi 4 and Arduino Nano V3 connected via bidirectional level shifter, with limit switches and polyfuse protection on the logic rail |
 
 ### 3. Calculations
 
