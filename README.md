@@ -216,7 +216,17 @@ confirmed by the blue-dominated contour.
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_3.png" width="500" height="400"/>
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_4.png" width="500" height="400"/>
 </p>
-</details
+</details>
+
+<details>
+<summary>Safety Factor</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_4.png" width="500" height="400"/>
+</p>
+</details>
 
 - Max displacement: **~0.017 mm** — lowest among all three materials
 - Max von Mises stress: **50.21 MPa** — stress distribution dominated by blue contour, structure is safe throughout
