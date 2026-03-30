@@ -102,6 +102,13 @@ structure. Results dominated by blue contour across all three materials
 indicate that stress levels remain well within safe limits throughout the
 structural body under gravity-only loading.
 
+**Safety Factor** is derived from the ratio of material yield strength to
+local von Mises stress. Values above 2 are generally considered acceptable
+in engineering practice. The minimum value is read from the Inventor SF
+contour plot — peak stress occurs only at localized concentration points,
+while the majority of the structure maintains a high safety margin as
+confirmed by the blue-dominated contour.
+
 > ⚠️ Note: Peak displacement values include contribution from motor assembly
 > motion. Structural frame comparison is best assessed from the color contour
 > distribution in the images above.
@@ -137,9 +144,19 @@ structural body under gravity-only loading.
 </p>
 </details>
 
+<details>
+<summary>Safety Factor</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_4.png" width="500" height="400"/>
+</p>
+</details>
+
 - Max displacement: **0.089 mm**
-- Max von Mises stress: **51.42 MPa** — stress distribution dominated by
-  blue contour, structure is safe throughout
+- Max von Mises stress: **51.42 MPa** — stress distribution dominated by blue contour, structure is safe throughout
+- Min safety factor: **4.03** — well above acceptable threshold
 - Carbon fiber reinforcement improves stiffness compared to PLA-Basic
 
 #### B. PLA-Basic
@@ -164,9 +181,19 @@ structural body under gravity-only loading.
 </p>
 </details>
 
+<details>
+<summary>Safety Factor</summary>
+<p align="center">
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_1.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_2.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_3.png" width="500" height="400"/>
+  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_4.png" width="500" height="400"/>
+</p>
+</details>
+
 - Max displacement: **0.11 mm** — highest among all three materials
-- Max von Mises stress: **68.52 MPa** — stress distribution dominated by
-  blue contour, structure is safe throughout
+- Max von Mises stress: **68.52 MPa** — stress distribution dominated by blue contour, structure is safe throughout
+- Min safety factor: **3.02** — above acceptable threshold but lowest among three materials
 - Higher deformation due to absence of carbon fiber reinforcement
 
 #### C. Aluminum 6061
@@ -189,12 +216,13 @@ structural body under gravity-only loading.
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_3.png" width="500" height="400"/>
   <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_4.png" width="500" height="400"/>
 </p>
-</details>
+</details
 
 - Max displacement: **~0.017 mm** — lowest among all three materials
-- Max von Mises stress: **50.21 MPa** — stress distribution dominated by
-  blue contour, structure is safe throughout
+- Max von Mises stress: **50.21 MPa** — stress distribution dominated by blue contour, structure is safe throughout
+- Min safety factor: **4.12** — highest among three materials
 - Negligible deformation under gravity-only loading
+
 
 #### Comparison Summary
 
@@ -204,6 +232,7 @@ structural body under gravity-only loading.
 | :--- | :---: | :---: | :---: |
 | Max Displacement | 0.11 mm | 0.089 mm | ~0.017 mm |
 | Max Von Mises Stress | 68.52 MPa | 51.42 MPa | 50.21 MPa |
+| Min Safety Factor | 3.02 | 4.03 | 4.12 |
 | Stress Distribution | ✅ Safe (blue) | ✅ Safe (blue) | ✅ Safe (blue) |
 | Stiffness | Low | Moderate | Very High |
 | Cost | Low | Medium | High |
@@ -214,16 +243,7 @@ structural body under gravity-only loading.
 
 #### Insight
 
-All three materials show safe stress distribution under gravity-only loading,
-with von Mises stress contours dominated by blue across the entire structural
-body. The primary differentiator between materials is displacement. Aluminum
-6061 offers the lowest displacement (~0.017 mm) and highest stiffness, but
-requires CNC machining which significantly increases cost and lead time for
-an iterative research prototype. PLA-Basic, while structurally safe, shows
-the highest displacement (0.11 mm) due to its lower stiffness without carbon
-fiber reinforcement. PLA-CF was selected as the optimal material — offering
-lower displacement than PLA-Basic (0.089 mm) with the same ease of 3D
-printing, making it the most practical choice for this stage of development.
+All three materials show safe stress distribution under gravity-only loading, with minimum safety factors well above 2 across the entire structure. Aluminum 6061 offers the best mechanical performance — lowest displacement (~0.017 mm) and highest safety factor (4.12) — but requires CNC machining which significantly increases cost and lead time for an iterative research prototype. PLA-Basic has the lowest safety factor (3.02) and highest displacement (0.11 mm) due to the absence of carbon fiber reinforcement. PLA-CF was selected as the optimal material, offering a higher safety factor than PLA-Basic (4.03), lower displacement (0.089 mm), and the same ease of 3D printing — making it the most practical choice for this stage of development.
 
 ---
 
