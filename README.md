@@ -301,10 +301,10 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 
 ---
 
-### 5. Imaging Calculation
-
+### 5. Imaging
+ 
 #### Known Variables
-
+ 
 | Variable | Symbol | Value | Source |
 | :--- | :--- | :--- | :--- |
 | Nominal tube length | L₀ | 160 mm | Objective spec |
@@ -313,53 +313,86 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 | Sensor height | Sh | 4.712 mm | IMX477 datasheet |
 | Sensor resolution (H × V) | Rw × Rh | 4056 × 3040 px | IMX477 datasheet |
 | Pixel size | p | 1.55 × 1.55 µm | IMX477 datasheet |
-
+ 
 > **Verification:** `Sw = p × Rw = 1.55µm × 4056 = 6.287mm` ✅
-
-#### Formulas
-
+ 
+#### Formulas & Derivations
+ 
 **1. Actual Magnification at a Given Tube Length**
-
+ 
+Magnification in a lens system is defined as the ratio of image distance to object distance. Since the sample is always fixed at the objective's focal plane, only the image distance (tube length) changes. Therefore magnification scales linearly with tube length:
+ 
 $$M_{actual} = M_0 \times \frac{L_{actual}}{L_0}$$
-
-> ⚠️ This formula is an approximation valid at the nominal tube length (160mm). Any deviation introduces spherical aberrations — empirical validation is required for non-nominal tube lengths.
-
+ 
+> ⚠️ Valid as an approximation near the nominal tube length (160mm). Larger deviations introduce spherical aberrations — empirical validation is required.
+ 
 **2. Field of View**
-
+ 
+Rearranging the definition of magnification (`M = image size / object size`), the real-world size captured by the sensor is:
+ 
 $$FOV_{horizontal} = \frac{S_w}{M_{actual}} \qquad FOV_{vertical} = \frac{S_h}{M_{actual}}$$
-
+ 
 **3. Limiting FOV (circular samples)**
-
+ 
+The sensor is rectangular but wellplates are circular. The vertical axis (shorter side) is the limiting dimension:
+ 
 $$FOV_{limiting} = FOV_{vertical} = \frac{S_h}{M_{actual}}$$
-
+ 
 **4. Required Tube Length for a Target FOV**
-
+ 
+Combining formulas 1 and 2 and solving for tube length:
+ 
 $$L_{target} = \frac{S_h \times L_0}{M_0 \times FOV_{target}}$$
-
+ 
 **5. Empirical Scale (known bead size)**
-
+ 
+If the real diameter of a reference bead is known, pixel scale and FOV can be derived directly from image measurements:
+ 
 $$\mu m/pixel = \frac{d_{bead,real}}{d_{bead,pixel}} \qquad M_{actual} = \frac{S_w}{FOV_{horizontal}} \times 1000$$
-
+ 
 **6. Empirical FOV Ratio (unknown bead size)**
-
+ 
+If bead size is unknown but the same beads are imaged at two different tube lengths, the FOV ratio can be derived purely from pixel measurements — no real size needed:
+ 
 $$\frac{FOV_1}{FOV_2} = \frac{L_2}{L_1} = \frac{d_{bead,px,2}}{d_{bead,px,1}}$$
-
-#### Worked Example — 96-well Plate
-
-**Target:** Image an entire single well (diameter = 9 mm)
-
-$$FOV_{vertical,160} = \frac{4.712}{10} = 0.4712\ \text{mm} = 471.2\ \mu\text{m}$$
-
-$$L_{target} = 160 \times \frac{471.2}{9000} \approx 8.4\ \text{mm} \quad \Rightarrow \quad M_{actual} = 10 \times \frac{8.4}{160} = 0.525\text{x}$$
-
-$$FOV_{vertical} = \frac{4.712}{0.525} \approx 9.0\ \text{mm}\ ✅ \qquad FOV_{horizontal} = \frac{6.287}{0.525} = 11.97\ \text{mm}$$
-
-| Tube Length | Magnification | FOV Horizontal | FOV Vertical | Fits 9mm well? |
-| :--- | :--- | :--- | :--- | :--- |
-| 160 mm | 10x | 628.7 µm | 471.2 µm | ❌ |
-| 130 mm | 8.125x | 774 µm | 580 µm | ❌ |
-| 9 mm | 0.5625x | 11.18 mm | 8.38 mm | ⚠️ nearly |
-| **8.4 mm** | **0.525x** | **11.97 mm** | **9.00 mm** | **✅** |
+ 
+#### Tube Length Selection — 96-well Plate (well diameter = 9 mm)
+ 
+Five tube lengths were selected for empirical testing, each with a distinct optical rationale:
+ 
+| # | Tube Length | Magnification | FOV Horizontal | FOV Vertical | Rationale |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| 1 | 160 mm | 10x | 628.7 µm | 471.2 µm | Nominal objective spec — baseline reference |
+| 2 | 8.4 mm | 0.525x | 11.97 mm | 9.00 mm | FOV vertical = 9mm — fits entire well height |
+| 3 | 11.2 mm | 0.70x | 8.98 mm | 6.73 mm | FOV horizontal = 9mm — fits entire well width |
+| 4 | 84.2 mm | 5.26x | 1.20 mm | 0.90 mm | Midpoint between nominal and shortest — gradual aberration check |
+| 5 | 64 mm | 4x | 1.57 mm | 1.18 mm | 4x magnification — evaluate mid-range image quality |
+ 
+**Derivations:**
+ 
+$$L_2 = \frac{S_h \times L_0}{M_0 \times FOV_{target}} = \frac{4.712 \times 160}{10 \times 9} \approx 8.4\ \text{mm}$$
+ 
+$$L_3 = \frac{S_w \times L_0}{M_0 \times FOV_{target}} = \frac{6.287 \times 160}{10 \times 9} \approx 11.2\ \text{mm}$$
+ 
+$$L_4 = \frac{8.4 + 160}{2} = 84.2\ \text{mm}$$
+ 
+$$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
+ 
+#### Empirical Results
+ 
+> 📝 **TBD:** Insert captured images for each tube length below after testing. Then add analysis and insight based on observed image quality, aberration, and FOV.
+ 
+| # | Tube Length | Captured Image (microbeads) |  Captured Image (spheorids) | Notes |
+| :---: | :--- | :--- | :--- | :--- |
+| 1 | 160 mm | *(TBD)* | *(TBD)* | — |
+| 2 | 8.4 mm | *(TBD)* | *(TBD)* | — |
+| 3 | 11.2 mm | *(TBD)* | *(TBD)* | — |
+| 4 | 84.2 mm | *(TBD)* | *(TBD)* | — |
+| 5 | 64 mm | *(TBD)* | *(TBD)* | — |
+ 
+#### Insight
+ 
+> 📝 **TBD:** Add after empirical testing — which tube length gives the best balance of FOV, sharpness, and aberration for spheroid imaging.
 
 ---
 
