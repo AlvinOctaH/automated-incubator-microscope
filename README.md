@@ -301,7 +301,7 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 
 ---
 
-### 5. Imaging
+### 5. Imaging System Design
  
 #### Known Variables
  
