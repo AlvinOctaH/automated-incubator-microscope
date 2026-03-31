@@ -418,17 +418,14 @@ Images captured using a professional laboratory microscope as ground truth refer
   <tr>
     <th align="center">Magnification</th>
     <th align="center">Image</th>
-    <th>Notes</th>
   </tr>
   <tr>
     <td align="center">4x</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using4x_microscope.jpg" width="200"/></td>
-    <td>TBD</td>
   </tr>
   <tr>
     <td align="center">10x</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using10x_microscope.jpg" width="200"/></td>
-    <td>TBD</td>
   </tr>
 </table>
 
