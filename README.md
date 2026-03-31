@@ -410,8 +410,6 @@ $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
  
 #### Empirical Results
  
-> 📝 **TBD:** Insert captured images for each tube length below after testing. Then add analysis and insight based on observed image quality, aberration, and FOV.
- 
 | # | Tube Length | Captured Image (microbeads) |  Captured Image (microbeads+light) | Notes |
 | :---: | :--- | :--- | :--- | :--- |
 | 1 | 160 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm_with_light.jpg) | TBD |
