@@ -412,13 +412,13 @@ $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
  
 > 📝 **TBD:** Insert captured images for each tube length below after testing. Then add analysis and insight based on observed image quality, aberration, and FOV.
  
-| # | Tube Length | Captured Image (microbeads) |  Captured Image (spheorids) | Notes |
+| # | Tube Length | Captured Image (microbeads) |  Captured Image (microbeads+light) | Notes |
 | :---: | :--- | :--- | :--- | :--- |
-| 1 | 160 mm | *(TBD)* | *(TBD)* | — |
-| 2 | 8.4 mm | *(TBD)* | *(TBD)* | — |
-| 3 | 11.2 mm | *(TBD)* | *(TBD)* | — |
-| 4 | 84.2 mm | *(TBD)* | *(TBD)* | — |
-| 5 | 64 mm | *(TBD)* | *(TBD)* | — |
+| 1 | 160 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm_with_light.jpg) | TBD |
+| 2 | 8.4 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm_with_light.jpg) | TBD |
+| 3 | 11.2 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm_with_light.jpg) | TBD |
+| 4 | 84.2 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm_with_light.jpg)| TBD |
+| 5 | 64 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm_with_light.jpg) | TBD |
  
 #### Insight
  
