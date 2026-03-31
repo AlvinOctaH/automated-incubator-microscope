@@ -410,6 +410,32 @@ $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
  
 #### Empirical Results
 
+**Reference — Professional Lab Microscope**
+
+Images captured using a professional laboratory microscope as ground truth reference for image quality comparison.
+
+<table>
+  <tr>
+    <th align="center">Magnification</th>
+    <th align="center">Image</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">4x</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using4x_microscope.jpg" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">10x</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using10x_microscope.jpg" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
+
+---
+
+**System Results — This Device**
+
 <table>
   <tr>
     <th align="center">#</th>
@@ -454,6 +480,10 @@ $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
     <td>TBD</td>
   </tr>
 </table>
+
+#### Insight
+
+> 📝 **TBD:** Add after empirical testing — which tube length gives the best balance of FOV, sharpness, and aberration for spheroid imaging.
  
 #### Insight
  
