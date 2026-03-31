@@ -409,14 +409,51 @@ $$L_4 = \frac{8.4 + 160}{2} = 84.2\ \text{mm}$$
 $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
  
 #### Empirical Results
- 
-| # | Tube Length | Captured Image (microbeads) |  Captured Image (microbeads+light) | Notes |
-| :---: | :--- | :--- | :--- | :--- |
-| 1 | 160 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm_with_light.jpg) | TBD |
-| 2 | 8.4 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm_with_light.jpg) | TBD |
-| 3 | 11.2 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm_with_light.jpg) | TBD |
-| 4 | 84.2 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm_with_light.jpg)| TBD |
-| 5 | 64 mm | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm.jpg) | ![](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm_with_light.jpg) | TBD |
+
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Microbeads</th>
+    <th align="center">Microbeads + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td>8.4 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td>11.2 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td>64 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
  
 #### Insight
  
