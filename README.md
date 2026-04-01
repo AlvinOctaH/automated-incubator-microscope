@@ -579,18 +579,137 @@ The schematic is organized into 4 sheets:
 ## 💻 Software
 
 ### 1. Architecture
+ 
+#### 1.1 System Overview
+ 
+The system is split across two processors with clearly separated responsibilities. The Raspberry Pi 4 handles all high-level tasks — running the Flask web server, managing the experiment loop, controlling the camera, and serving the browser-based GUI. The Arduino Nano V3 handles all real-time low-level tasks — generating STEP/DIR pulses for the three stepper motors, polling limit switches, and controlling the shared SLP pin for driver sleep/wake. Communication between the two is via UART serial (currently USB cable, migrating to TX/RX via bidirectional level shifter).
+ 
+![System Overview](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/system_overview.png)
+ 
+#### 1.2 Software Flow
+ 
+The web GUI runs in any browser on the same network. User actions hit Flask REST endpoints, which dispatch commands to the SerialManager (for motor moves) or CameraManager (for captures). The ExperimentRunner runs as a background thread, orchestrating the full 24/7 scan cycle independently of the GUI.
+ 
+![Software Flow](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/software_flow.png)
+ 
+#### 1.3 Experiment Loop
+ 
+Each round begins with an autofocus sweep at the reference well (A1) using the Tenengrad focus metric. The stage then visits every well in serpentine order — move, settle, capture, repeat. After all 96 wells are done, the system waits for the configured interval, then checks whether the experiment end time has been reached. If not, it starts the next round. If yes, the experiment ends automatically.
+ 
+![Experiment Loop](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/experiment_loop.png)
+ 
+#### 1.4 Repository Structure
+ 
+```
+Automation-Incubator-Microscope/
+├── backend/
+│   └── app.py              # Flask server — routes, ExperimentRunner, CameraManager, SerialManager
+├── frontend/
+│   ├── index.html          # Web GUI — stage controls, experiment panel, live status
+│   └── assets/
+│       └── imbsllogo.png
+├── firmware/
+│   └── sketch_oct03a.ino   # Arduino Nano V3 — STEP/DIR, SLP, limit switches, stop
+├── config.json             # Runtime config — interval, settle delay, storage path, Z range
+└── README.md
+```
+ 
+---
+ 
+### 2. Firmware
+ 
+The Arduino firmware (`sketch_oct03a.ino`) handles all real-time hardware tasks. It listens for serial commands from the Raspberry Pi and executes them deterministically without OS interference.
+ 
+#### Serial Command Reference
+ 
+| Command | Action |
+| :--- | :--- |
+| `A1` … `H12` | Move to specified well |
+| `home` | Home X and Y axes to limit switches |
+| `scan` | Home then serpentine scan all 96 wells |
+| `U` | Z axis up one increment |
+| `D` | Z axis down one increment |
+| `sleep` | Set SLP HIGH — all drivers enter low-power sleep |
+| `wake` | Set SLP LOW — all drivers become active |
+| `stop` | Abort current movement or scan mid-operation |
+ 
+---
+ 
+### 3. GUI
+ 
+The GUI is a single-page web app served by Flask, accessible from any browser on the same network as the Raspberry Pi. It is built with plain HTML, Tailwind CSS, and vanilla JavaScript — no build step required.
+ 
+**Stage controls** — Home, Z Up, Z Down, Autofocus, Scan All, Stop, Reset Busy are always visible at the top. The 96-well grid below highlights the current well position in real time (polled every 1 second).
+ 
+**Experiment panel** — sits below the grid. User fills in Experiment ID (optional), capture interval, settle delay, storage path, autofocus Z range, and end date/time. Pressing Start saves the settings to `config.json` and launches the experiment loop. A live status box shows round number, total images captured, countdown to next scan, and experiment end time.
+ 
+---
+ 
+### 4. Data Management
+ 
+#### 4.1 Pipeline
+ 
+Every captured image goes through a three-step pipeline immediately after capture: raw array from Picamera2 → BGR conversion → grayscale conversion via OpenCV. Both the raw PNG and grayscale PNG are saved side by side. The original is retained for potential reprocessing.
+ 
+![Data Pipeline](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_pipeline.png)
+ 
+#### 4.2 Folder Structure
+ 
+```
+/data/
+└── EXP_001_20260401/
+    ├── metadata.json           ← experiment parameters
+    ├── A1/
+    │   ├── 20260401_080000_A1_r001_raw.png
+    │   ├── 20260401_080000_A1_r001_gray.png
+    │   └── ...
+    ├── A2/
+    └── ...
+```
+ 
+#### 4.3 File Naming Convention
+ 
+```
+YYYYMMDD_HHMMSS_[WellID]_r[Round]_[type].png
+```
+ 
+| Field | Example | Description |
+| :--- | :--- | :--- |
+| YYYYMMDD | 20260401 | Date of capture |
+| HHMMSS | 080000 | Time of capture (24h) |
+| WellID | A1, B3, H12 | Well position |
+| Round | r001, r012 | Scan round index |
+| type | raw / gray | Original or grayscale |
+ 
+#### 4.4 Metadata
+ 
+Each experiment generates a `metadata.json` at the experiment root:
+ 
+```json
+{
+  "experiment_id": "EXP_001_20260401",
+  "start_time": "2026-04-01T08:00:00",
+  "end_time": "2026-04-08T08:00:00",
+  "capture_interval_hours": 2,
+  "settle_delay_ms": 500,
+  "autofocus_z_range": 20,
+  "autofocus_step_size": 1
+}
+```
+ 
+#### 4.5 Storage Estimate
+ 
+For a 96-well plate, captured every 2 hours over 7 days, saving grayscale PNG (~2 MB each):
+ 
+```
+96 wells × 12 captures/day × 7 days = 8,064 images ≈ 16 GB/week
+```
+ 
+Recommended storage: USB SSD 256 GB connected to Raspberry Pi.
+ 
+---
 
-> 🚧 **In progress**
-
-### 2. GUI
-
-> 🚧 **In progress**
-
-### 3. Data Management
-
-> 🚧 **In progress**
-
-### 4. Software Insight
+### 5. Software Insight
 
 > 📝 **TBD:** Add design decisions — e.g. RPi vs Arduino task separation, communication protocol, data pipeline.
 
