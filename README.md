@@ -478,7 +478,7 @@ Images captured using a professional laboratory microscope as ground truth refer
   </tr>
   <tr>
     <td align="center">6</td>
-    <td>72 mm (5x Magnification)</td>
+    <td>72 mm (4.5x Magnification)</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/72mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/72mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
