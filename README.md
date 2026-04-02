@@ -584,19 +584,19 @@ The schematic is organized into 4 sheets:
  
 The system is split across two processors with clearly separated responsibilities. The Raspberry Pi 4 handles all high-level tasks — running the Flask web server, managing the experiment loop, controlling the camera, and serving the browser-based GUI. The Arduino Nano V3 handles all real-time low-level tasks — generating STEP/DIR pulses for the three stepper motors, polling limit switches, and controlling the shared SLP pin for driver sleep/wake. Communication between the two is via UART serial (currently USB cable, migrating to TX/RX via bidirectional level shifter).
  
-![System Overview](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/System%20Overview.jpg)
+![System Overview](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/System_Overview.jpg)
  
 #### 1.2 Software Flow
  
 The web GUI runs in any browser on the same network. User actions hit Flask REST endpoints, which dispatch commands to the SerialManager (for motor moves) or CameraManager (for captures). The ExperimentRunner runs as a background thread, orchestrating the full 24/7 scan cycle independently of the GUI.
  
-![Software Flow](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Software%20Flow.jpg)
+![Software Flow](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Software_Flow.jpg)
  
 #### 1.3 Experiment Loop
  
 Each round begins with an autofocus sweep at the reference well (A1) using the Tenengrad focus metric. The stage then visits every well in serpentine order — move, settle, capture, repeat. After all 96 wells are done, the system waits for the configured interval, then checks whether the experiment end time has been reached. If not, it starts the next round. If yes, the experiment ends automatically.
  
-![Experiment Loop](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Experiment%20Loop.jpg)
+![Experiment Loop](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Experiment_Loop.jpg)
  
 #### 1.4 Repository Structure
  
@@ -651,7 +651,7 @@ The GUI is a single-page web app served by Flask, accessible from any browser on
  
 Every captured image goes through a three-step pipeline immediately after capture: raw array from Picamera2 → BGR conversion → grayscale conversion via OpenCV. Both the raw PNG and grayscale PNG are saved side by side. The original is retained for potential reprocessing.
  
-![Data Pipeline](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Data%20Pipeline.jpg)
+![Data Pipeline](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Data_Pipeline.jpg)
  
 #### 4.2 Folder Structure
  
