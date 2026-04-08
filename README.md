@@ -431,8 +431,9 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 ---
 
-**System Results — This Device**
+## System Results — This Device
 
+### 🔬 Objective Lens 10x
 <table>
   <tr>
     <th align="center">#</th>
@@ -452,14 +453,12 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td align="center">2</td>
     <td>8.4 mm</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
@@ -488,6 +487,68 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>80 mm (5x Magnification)</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
+
+---
+
+### 🔬 Objective Lens 4x
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Microbeads</th>
+    <th align="center">Microbeads + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td>8.4 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td>11.2 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td>64 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/64mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">6</td>
+    <td>72 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/72mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/72mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td>80 mm</td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/80mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
 </table>
