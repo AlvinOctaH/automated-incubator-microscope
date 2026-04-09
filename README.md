@@ -80,7 +80,7 @@ $$
 #### Interference Analysis
 
 <p align="center">
-  <img src="assets/inference_analysis" width="800"/>
+  <img src="assets/inference_analysis.jpeg" width="800"/>
 </p>
 
 > ⚠️ **Note:** The interference analysis flags several overlaps in the CAD model. These occur within intentionally modeled precision components (linear rails, KFL08 bearing threaded regions) and are not physically relevant in real-world assembly. No functional collisions exist in the final design.
