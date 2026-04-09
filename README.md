@@ -49,7 +49,7 @@ An automated XYZ microscope stage designed for continuous 24/7 brightfield imagi
 #### Degrees of Freedom (DOF)
 
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Kinematic%20%26%20Motion%20Analysis.gif" width="800"/>
+  <img src="assets/kinematik&motion.gif" width="800"/>
 </p>
 
 Each axis provides exactly 1 translational DOF with no unintended rotational or parasitic motion, confirming proper constraint and assembly.
@@ -80,7 +80,7 @@ $$
 #### Interference Analysis
 
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Inference%20Analysis.jpeg" width="800"/>
+  <img src="assets/inference_analysis" width="800"/>
 </p>
 
 > ⚠️ **Note:** The interference analysis flags several overlaps in the CAD model. These occur within intentionally modeled precision components (linear rails, KFL08 bearing threaded regions) and are not physically relevant in real-world assembly. No functional collisions exist in the final design.
@@ -266,20 +266,20 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 <details>
 <summary>Previous Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx0_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx0.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx0_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx0_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx0_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>New Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketx1_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx1.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx1_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx1_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketx1_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -288,20 +288,20 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 <details>
 <summary>Previous Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety0_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety0.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety0_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety0_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety0_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>New Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/brackety1_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety1.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety1_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety1_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/brackety1_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -310,20 +310,20 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 <details>
 <summary>Previous Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz0_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz0.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz0_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz0_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz0_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>New Version</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/bracketz1_4.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz1.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz1_2.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz1_3.png" width="500" height="400"/>
+  <img src="assets/stress_analysis_results/bracketz1_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -425,11 +425,11 @@ Images captured using a professional laboratory microscope as ground truth refer
   </tr>
   <tr>
     <td align="center">4x</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using4x_microscope.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/professional_microsope/using4x_microscope.jpg" width="200"/></td>
   </tr>
   <tr>
     <td align="center">10x</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/using10x_microscope.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/professional_microsope/using10x_microscope.jpg" width="200"/></td>
   </tr>
 </table>
 
@@ -452,48 +452,50 @@ Microbeads were used as a controlled reference target to characterize optical pe
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">2</td>
     <td>8.4 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/8.4mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/11.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm (4.5x Magnification)</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/72mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/72mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm (5x Magnification)</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
 </table>
@@ -513,50 +515,50 @@ Microbeads were used as a controlled reference target to characterize optical pe
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">2</td>
     <td>8.4 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/8.4mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
     <td>Out of focus at this tube length with 4x objective — the combination of short tube length and lower base magnification places the image plane outside the usable focus range.</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/11.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
     <td>Out of focus at this tube length with 4x objective — same constraint as 8.4 mm. These two tube lengths are outside the practical operating range for the 4x objective.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/64mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/72mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/72mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
   </tr>
 </table>
@@ -592,10 +594,10 @@ Images will be captured at the selected tube length(s) from Stage 1 using actual
 Thermal images of each stepper motor and the well plate under 24/7 operating conditions:
 
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20X.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Y.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Step%20Motor%20Z.jpeg" width="200"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/Wellplate.jpeg" width="200"/>
+  <img src="assets/thermal_results/stp_mtr_x.jpeg" width="200"/>
+  <img src="assets/thermal_results/stp_mtr_y.jpeg" width="200"/>
+  <img src="assets/thermal_results/stp_mtr_z.jpeg" width="200"/>
+  <img src="assets/thermal_results/wellplate.jpeg" width="200"/>
 </p>
 
 > 📝 **TBD:** Add peak temperatures per motor, wellplate temperature, and acceptable operating range.
