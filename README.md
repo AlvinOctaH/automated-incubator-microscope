@@ -408,7 +408,11 @@ $$L_4 = \frac{8.4 + 160}{2} = 84.2\ \text{mm}$$
  
 $$L_5 = \frac{4}{10} \times 160 = 64\ \text{mm}$$
  
-#### Empirical Results
+#### Imaging Validation
+
+Imaging validation was conducted in two stages: first using microbeads as a controlled reference target to evaluate optical performance across tube lengths, then using spheroids as the actual biological sample to confirm suitability for long-term live-cell imaging.
+
+---
 
 **Reference — Professional Lab Microscope**
 
@@ -431,9 +435,12 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 ---
 
-## System Results — This Device
+##### Stage 1 — Microbead Imaging
 
-### 🔬 Objective Lens 10x
+Microbeads were used as a controlled reference target to characterize optical performance across tube lengths. Each tube length was tested at two objective configurations (10x and 4x) to evaluate sharpness, chromatic aberration, and overall image quality before proceeding to biological samples.
+
+###### 🔬 Objective Lens 10x
+
 <table>
   <tr>
     <th align="center">#</th>
@@ -493,7 +500,8 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 ---
 
-### 🔬 Objective Lens 4x
+###### 🔬 Objective Lens 4x
+
 <table>
   <tr>
     <th align="center">#</th>
@@ -514,14 +522,14 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>8.4 mm</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Out of focus at this tube length with 4x objective — the combination of short tube length and lower base magnification places the image plane outside the usable focus range.</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/src/data_microbeads/grayscale_images_4x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Out of focus at this tube length with 4x objective — same constraint as 8.4 mm. These two tube lengths are outside the practical operating range for the 4x objective.</td>
   </tr>
   <tr>
     <td align="center">4</td>
@@ -553,13 +561,29 @@ Images captured using a professional laboratory microscope as ground truth refer
   </tr>
 </table>
 
+---
+
+##### Stage 2 — Spheroid Imaging
+
+> 🚧 **In progress** — spheroid imaging results to be added after biological sample testing.
+
+Images will be captured at the selected tube length(s) from Stage 1 using actual spheroid samples in a 96-well plate. Results will include both 10x and 4x objective configurations.
+
+###### 🔬 Objective Lens 10x
+
+> 📝 **TBD:** Add spheroid images at selected tube length(s).
+
+###### 🔬 Objective Lens 4x
+
+> 📝 **TBD:** Add spheroid images at selected tube length(s).
+
+---
+
 #### Insight
 
 > 📝 **TBD:** Add after empirical testing — which tube length gives the best balance of FOV, sharpness, and aberration for spheroid imaging.
- 
-#### Insight
- 
-> 📝 **TBD:** Add after empirical testing — which tube length gives the best balance of FOV, sharpness, and aberration for spheroid imaging.
+
+###
 
 ---
 
