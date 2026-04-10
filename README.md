@@ -589,7 +589,45 @@ Images will be captured at the selected tube length(s) from Stage 1 using actual
 
 ---
 
-### 6. Thermal Consideration
+### 6. Z-Axis Focus Repeatability
+
+To verify that the anti-backlash nut effectively eliminates positional error on the Z-axis, a repeatability test was conducted after assembly.
+[📄 View Full Analysis Result (PDF)](./mechanical/focus_report.html)
+
+#### Method
+
+The Z-axis was positioned to a reference focal plane and set as baseline. For each cycle, the stage moves down a fixed number of steps then returns to baseline. A sharpness score is computed from each captured image using **Laplacian Variance** — a focus metric that measures high-frequency edge content in the image. Higher variance = sharper image = better focus.
+
+$$\text{Sharpness} = \text{Var}\left(\nabla^2 I\right)$$
+
+**Coefficient of Variation (CV%)** is used as the repeatability indicator — lower CV means the Z-axis consistently returns to the same focal plane.
+
+#### Test Parameters
+
+| Parameter | Value |
+| :--- | :--- |
+| Cycles | 50 |
+| Z displacement per cycle | 500 steps (2.5 mm) |
+| Focus metric | Laplacian Variance |
+
+#### Results
+
+| Metric | Value |
+| :--- | :--- |
+| Mean sharpness | 2.1355 |
+| Std Dev | 0.0208 |
+| Min / Max | 2.0928 / 2.2038 |
+| **CV (%)** | **0.97%** |
+
+CV of **0.97%** — well below the 2% threshold for excellent repeatability. Visual inspection of all 50 images confirmed consistent focus with no visible defocus across any cycle.
+
+#### Insight
+
+The anti-backlash nut successfully eliminates Z-axis positional error. The lead screw + anti-backlash nut + NEMA17 combination delivers consistent focal plane return across repeated cycles, confirming suitability for long-term automated imaging.
+
+---
+
+### 7. Thermal Consideration
 
 Thermal images of each stepper motor and the well plate under 24/7 operating conditions:
 
@@ -604,13 +642,13 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
 
 ---
 
-### 7. Engineering Drawing
+### 8. Engineering Drawing
 
 > 🚧 **In progress** — engineering drawings and GD&T specifications to be added.
 
 ---
 
-### 8. Mechanical Insight
+### 9. Mechanical Insight
 
 > 📝 **TBD:** Add final design decisions and rationale per subsection.
 
