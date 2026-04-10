@@ -614,12 +614,12 @@ $$\text{Sharpness} = \text{Var}\left(\nabla^2 I\right)$$
 
 | Metric | Value |
 | :--- | :--- |
-| Mean sharpness | 2.1355 |
-| Std Dev | 0.0208 |
+| Mean sharpness | 2.1344 |
+| Std Dev | 0.0251 |
 | Min / Max | 2.0928 / 2.2038 |
-| **CV (%)** | **0.97%** |
+| **CV (%)** | **1.18%** |
 
-CV of **0.97%** — well below the 2% threshold for excellent repeatability. Visual inspection of all 50 images confirmed consistent focus with no visible defocus across any cycle.
+CV of **1.18%** — well below the 2% threshold for excellent repeatability. Visual inspection of all 50 images confirmed consistent focus with no visible defocus across any cycle.
 
 #### Insight
 
