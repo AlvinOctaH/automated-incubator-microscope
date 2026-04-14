@@ -612,7 +612,7 @@ Images captured using a professional laboratory microscope as ground truth refer
   </tr>
   <tr>
     <td align="center">7</td>
-    <td>80 mm (5x Magnification)</td>
+    <td>80 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
     <td>TBD</td>
