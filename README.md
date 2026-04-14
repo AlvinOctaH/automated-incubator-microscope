@@ -414,6 +414,10 @@ Imaging validation was conducted in two stages: first using microbeads as a cont
 
 ---
 
+##### Stage 1 — Microbead Imaging
+
+Microbeads were used as a controlled reference target to characterize optical performance across tube lengths. Each tube length was tested at two objective configurations (10x and 4x) to evaluate sharpness, chromatic aberration, and overall image quality before proceeding to biological samples.
+
 **Reference — Professional Lab Microscope**
 
 Images captured using a professional laboratory microscope as ground truth reference for image quality comparison.
@@ -432,12 +436,6 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td align="center"><img src="assets/imaging_results/data_microbeads/professional_microsope/using10x_microscope.jpg" width="200"/></td>
   </tr>
 </table>
-
----
-
-##### Stage 1 — Microbead Imaging
-
-Microbeads were used as a controlled reference target to characterize optical performance across tube lengths. Each tube length was tested at two objective configurations (10x and 4x) to evaluate sharpness, chromatic aberration, and overall image quality before proceeding to biological samples.
 
 ###### 🔬 Objective Lens 10x
 
@@ -567,17 +565,94 @@ Microbeads were used as a controlled reference target to characterize optical pe
 
 ##### Stage 2 — Spheroid Imaging
 
-> 🚧 **In progress** — spheroid imaging results to be added after biological sample testing.
+TBD.
 
-Images will be captured at the selected tube length(s) from Stage 1 using actual spheroid samples in a 96-well plate. Results will include both 10x and 4x objective configurations.
+**Reference — Professional Lab Microscope**
+
+Images captured using a professional laboratory microscope as ground truth reference for image quality comparison.
+
+<table>
+  <tr>
+    <th align="center">Magnification</th>
+    <th align="center">Image</th>
+  </tr>
+  <tr>
+    <td align="center">4x</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/professional_microscope/using4x_microscope.jpg" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center">10x</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/professional_microscope/using10x_microscope.jpg" width="200"/></td>
+  </tr>
+</table>
 
 ###### 🔬 Objective Lens 10x
 
-> 📝 **TBD:** Add spheroid images at selected tube length(s).
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Spheroids</th>
+    <th align="center">Spheroids + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td>80 mm (5x Magnification)</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
+
+---
 
 ###### 🔬 Objective Lens 4x
 
-> 📝 **TBD:** Add spheroid images at selected tube length(s).
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Spheroids</th>
+    <th align="center">Spheroids + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td>80 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
 
 ---
 
