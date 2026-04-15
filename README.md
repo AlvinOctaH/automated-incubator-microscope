@@ -1,4 +1,4 @@
-# 🔬 Automation Incubator Microscope
+# 🔬 Automated Incubator Microscope
 
 <div align="center">
 
