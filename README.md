@@ -495,7 +495,7 @@ Five tube lengths were selected for empirical testing, each with a distinct opti
 | 1 | 160 mm | 10x | 628.7 µm | 471.2 µm | Nominal objective spec — baseline reference |
 | 2 | 8.4 mm | 0.525x | 11.97 mm | 9.00 mm | FOV vertical = 9mm — fits entire well height |
 | 3 | 11.2 mm | 0.70x | 8.98 mm | 6.73 mm | FOV horizontal = 9mm — fits entire well width |
-| 4 | 84.2 mm | 5.26x | 1.20 mm | 0.90 mm | Midpoint between nominal and shortest — gradual aberration check |
+| 4 | **84.2 mm ✅** | 5.26x | 1.20 mm | 0.90 mm | Midpoint between nominal and shortest — gradual aberration check. **Selected as the final tube length** — its magnification most closely matched the professional lab microscope reference. |
 | 5 | 64 mm | 4x | 1.57 mm | 1.18 mm | 4x magnification — evaluate mid-range image quality |
  
 **Derivations:**
@@ -761,6 +761,8 @@ Images captured using a professional laboratory microscope as ground truth refer
 Empirical testing overturned the naive assumption that the nominal 160 mm tube length (the objective's own spec) would give the best focus. For microbeads at 10x, 160 mm was actually the *worst* result in the set — a single unresolvable blur — while several shorter/longer candidates (8.4 mm, 11.2 mm, 64 mm, 80 mm) were sharp. At 4x, all four tested lengths held up consistently well for microbeads.
 
 For the actual spheroid samples, 10x was reliably good across every tube length tested (160 mm, 84.2 mm, 80 mm), landing close to the professional reference microscope. 4x was more inconsistent (160 mm good, 84.2 mm soft, 80 mm largely out of focus) — likely reflecting where that particular spheroid happened to sit along Z that day rather than a property of the tube length itself, since a real spheroid is a 3D object and not a flat calibration target like the microbeads.
+
+**Final choice: 84.2 mm at 10x**, confirmed with the supervisor and professor — its magnification most closely matched the professional lab microscope reference, out of all the candidates tested against both microbeads and real spheroid samples.
 
 **Takeaway:** 10x is the more dependable objective for this system, and tube length can't be trusted from the nominal spec alone — it has to be empirically confirmed per setup, exactly as done here.
 
