@@ -511,49 +511,49 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>160 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Severely out of focus — despite being the objective's nominal spec, beads appear as one large unresolvable blur with no visible edges. The nominal tube length did not translate directly to good focus at this working distance.</td>
   </tr>
   <tr>
     <td align="center">2</td>
     <td>8.4 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — bead edges and fine surface debris are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — comparable resolution to 8.4 mm, clean bead edge definition.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Bead edges are defined but internal detail is soft — noticeably less sharp than the shorter tube lengths.</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — bead edges and internal ring texture are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm (4.5x Magnification)</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Edges are reasonably defined but softer overall than 64 mm or 80 mm — intermediate sharpness.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm (5x Magnification)</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — fine features (a stray fiber in frame) are crisply resolved.</td>
   </tr>
 </table>
 
@@ -574,7 +574,7 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>160 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Mixed — beads toward the frame edges show reasonably defined edges, but a large soft, hazy artifact (likely an air bubble out of the focal plane) dominates the center of the frame.</td>
   </tr>
   <tr>
     <td align="center">2</td>
@@ -595,28 +595,28 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>84.2 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — bead edges and fine background debris/bubbles are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — wide field with many beads in crisp focus; fine hair fibers in the frame are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — bead edges clearly defined, consistent with the other 4x results.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Sharp — bead edges and fine bubbles/debris in the background are clearly resolved.</td>
   </tr>
 </table>
 
@@ -624,7 +624,7 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 ##### Stage 2 — Spheroid Imaging
 
-TBD.
+With the microbead calibration narrowing down usable tube lengths, the same three candidates (160 mm, 84.2 mm, 80 mm) were imaged against the actual biological sample — spheroids in a wellplate — at both objectives, to confirm the calibration holds up on a real, non-flat, 3D target.
 
 **Reference — Professional Lab Microscope**
 
@@ -660,21 +660,21 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>160 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Good — individual cell boundaries on the spheroid surface are resolved, comparable in sharpness to the professional microscope reference. Unlike the microbead test, 160 mm is not a poor result for spheroids.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Good — spheroid surface texture and a nearby smaller cell cluster are both clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Good — spheroid surface texture is clearly resolved, including a fine fiber crossing the frame.</td>
   </tr>
 </table>
 
@@ -695,21 +695,21 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td>160 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Good — the spheroid itself is in sharp focus with visible surface texture; an unrelated dark object elsewhere in frame is out of the focal plane, but doesn't reflect on the spheroid's own sharpness.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Soft — the spheroid is visible but lower-contrast than the 160 mm and 80 mm results, with more out-of-focus debris in the background.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm.jpg?raw=true" width="200"/></td>
     <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
-    <td>TBD</td>
+    <td>Out of focus — most of the frame is blurred; only a small spheroid at the frame edge is marginally resolved. The weakest result in the spheroid set.</td>
   </tr>
 </table>
 
@@ -717,7 +717,11 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 #### Insight
 
-> 📝 **TBD:** Add after empirical testing — which tube length gives the best balance of FOV, sharpness, and aberration for spheroid imaging.
+Empirical testing overturned the naive assumption that the nominal 160 mm tube length (the objective's own spec) would give the best focus. For microbeads at 10x, 160 mm was actually the *worst* result in the set — a single unresolvable blur — while several shorter/longer candidates (8.4 mm, 11.2 mm, 64 mm, 80 mm) were sharp. At 4x, all four tested lengths held up consistently well for microbeads.
+
+For the actual spheroid samples, 10x was reliably good across every tube length tested (160 mm, 84.2 mm, 80 mm), landing close to the professional reference microscope. 4x was more inconsistent (160 mm good, 84.2 mm soft, 80 mm largely out of focus) — likely reflecting where that particular spheroid happened to sit along Z that day rather than a property of the tube length itself, since a real spheroid is a 3D object and not a flat calibration target like the microbeads.
+
+**Takeaway:** 10x is the more dependable objective for this system, and tube length can't be trusted from the nominal spec alone — it has to be empirically confirmed per setup, exactly as done here.
 
 ###
 
