@@ -30,6 +30,26 @@ An automated XYZ microscope stage designed for continuous 24/7 brightfield imagi
 | Primary Material | PLA-CF |
 | Operating Mode | Continuous 24/7 |
 
+**Objectives**
+
+- Develop a 3-axis (XYZ) automated microscope stage capable of functioning reliably inside a standard cell culture incubator.
+- Enable automated brightfield imaging across all 96 wells in serpentine order with minimal user intervention.
+- Minimize contamination risk and preserve spheroid sample integrity throughout continuous long-term experiments.
+
+---
+
+## Related Work
+
+A few existing projects tackle automated or incubator-compatible microscopy:
+
+- Baudin et al., 2021 — [Low cost cloud based remote microscopy for biological sciences](https://doi.org/10.48550/arXiv.2106.07419) (the "Picroscope," a cloud-controlled remote imaging platform for cell culture plates)
+- Burke et al., 2024 — [EnderScope: A Low-Cost 3D-Printer-Based Scanning Microscope](https://doi.org/10.1098/rsta.2023.0214)
+- Dégut & Plevin, 2025 — [An open-sourced 3D printable microscope with a large CNC stage](https://doi.org/10.3390/mi13060833)
+- Gervasi et al., 2022 — [Automated Open-Hardware Multiwell Imaging Station for Microorganisms Observation](https://doi.org/10.1101/2024.12.31.630915)
+- Merces et al., 2021 — [The incubot: A 3D printer-based microscope for long-term live cell imaging within a tissue culture incubator](https://doi.org/10.1016/j.ohx.2021.e00189)
+
+This project's own angle: a stage sized and optically configured specifically for a standard 96-well plate, with a quantified per-axis repeatability test (not just a claim that it's repeatable) and a web-based experiment runner built for unattended multi-day scans.
+
 ---
 
 ## 🔩 Mechanical
@@ -257,7 +277,36 @@ All three materials show safe stress distribution under gravity-only loading, wi
 
 ---
 
-### 4. Design Iteration
+### 4. Z-Frame Redesign (Old vs New)
+
+The professor requested a shorter Z-axis assembly. Shortening it meant less material/height in the load path supporting the camera and objective, so the redesign had to be checked against the original for stiffness before committing to it — a shorter frame that flexed more under its own load would defeat the purpose (focus drift during long unattended runs).
+
+<table>
+  <tr><th align="center">Old Version</th><th align="center">New Version</th></tr>
+  <tr>
+    <td align="center"><img src="assets/stress_analysis_results/zframe_old_stress.png" width="380"/><br/>Von Mises stress</td>
+    <td align="center"><img src="assets/stress_analysis_results/zframe_new_stress.png" width="380"/><br/>Von Mises stress</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/stress_analysis_results/zframe_old_disp.png" width="380"/><br/>Displacement</td>
+    <td align="center"><img src="assets/stress_analysis_results/zframe_new_disp.png" width="380"/><br/>Displacement</td>
+  </tr>
+</table>
+
+| Metric | Old Version | New Version |
+| :--- | :---: | :---: |
+| Von Mises stress (max) | 17.22 MPa | 17.64 MPa |
+| Displacement (max) | 2.01 mm | 0.353 mm |
+
+Reference yield strengths: Steel 207 MPa, PLA-Basic 34 MPa — stress stayed far below either material's limit in both versions, so stress was never the concern here.
+
+#### Insight
+
+Stress barely changed (17.22 → 17.64 MPa) but displacement dropped by roughly 82% (2.01 mm → 0.353 mm). The old frame was structurally *safe* but too flexible for a focus-critical application — a shorter Z-axis with the same open frame shape would have flexed even more. The new version adds diagonal cross-bracing at the base, which is what actually fixed the stiffness problem; shortening the frame alone would not have.
+
+---
+
+### 5. Design Iteration
 
 Structural analysis was conducted on motor brackets for all three axes. Each bracket was evaluated across two design iterations.
 
@@ -331,7 +380,7 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 
 ---
 
-### 5. Imaging System Design
+### 6. Imaging System Design
  
 #### Known Variables
  
@@ -664,7 +713,51 @@ Images captured using a professional laboratory microscope as ground truth refer
 
 ---
 
-### 6. Z-Axis Focus Repeatability
+### 7. X-Axis Repeatability
+
+Positioning repeatability was measured using phase correlation on paired images: the stage moves from well A1 to well A12 and back, 50 times, and each returning image is compared against the A1 baseline image to measure sub-pixel drift.
+
+<p align="center">
+  <img src="assets/repeatability_results/x_axis_repeatability_chart.png" width="600"/>
+</p>
+
+| Metric | Value (px) | Value (µm, @ 1.55 µm/px) |
+| :--- | :---: | :---: |
+| Mean distance | 0.082 | 0.13 |
+| Std dev | 0.043 | 0.07 |
+| Max distance | 0.170 | 0.26 |
+| Mean dx | +0.055 | — |
+| Mean dy | +0.014 | — |
+
+#### Insight
+
+Sub-micron repeatability (mean 0.13 µm, max 0.26 µm) — the X-axis consistently returns to the same position across all 50 cycles, with no visible trend or drift in the displacement plot.
+
+---
+
+### 8. Y-Axis Repeatability
+
+Same phase-correlation method as the X-axis test, moving between well A1 and well E1, 50 cycles.
+
+<p align="center">
+  <img src="assets/repeatability_results/y_axis_repeatability_chart.png" width="600"/>
+</p>
+
+| Metric | Value (px) | Value (µm, @ 1.55 µm/px) |
+| :--- | :---: | :---: |
+| Mean distance | 0.241 | 0.37 |
+| Std dev | 0.242 | 0.38 |
+| Max distance | 1.102 | 1.71 |
+| Mean dx | +0.051 | — |
+| Mean dy | −0.013 | — |
+
+#### Insight
+
+The Y-axis is measurably less consistent than X and Z: mean error (0.37 µm) is about 3× the X-axis's, and the standard deviation (0.38 µm) is almost as large as the mean itself — several cycles show a sharp displacement spike (up to 1.71 µm) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms (sub-2-micron), but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
+
+---
+
+### 9. Z-Axis Focus Repeatability
 
 To verify that the anti-backlash nut effectively eliminates positional error on the Z-axis, a repeatability test was conducted after assembly.
 [📄 View Full Analysis Result (PDF)](./mechanical/focus_report.html)
@@ -702,7 +795,7 @@ The anti-backlash nut successfully eliminates Z-axis positional error. The lead 
 
 ---
 
-### 7. Thermal Consideration
+### 10. Thermal Consideration
 
 Thermal images of each stepper motor and the well plate under 24/7 operating conditions:
 
@@ -717,13 +810,13 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
 
 ---
 
-### 8. Engineering Drawing
+### 11. Engineering Drawing
 
 > 🚧 **In progress** — engineering drawings and GD&T specifications to be added.
 
 ---
 
-### 9. Mechanical Insight
+### 12. Mechanical Insight
 
 > 📝 **TBD:** Add final design decisions and rationale per subsection.
 
@@ -912,6 +1005,17 @@ Recommended storage: USB SSD 256 GB connected to Raspberry Pi.
 ### 5. Software Insight
 
 > 📝 **TBD:** Add design decisions — e.g. RPi vs Arduino task separation, communication protocol, data pipeline.
+
+---
+
+## Future Work
+
+This is an active lab tool, not a finished product — the following is what's known to still need work, in the order it needs to happen:
+
+1. **Revise the Y-axis mechanical assembly** to eliminate the vibration observed during motor movement (see [Y-Axis Repeatability](#8-y-axis-repeatability)).
+2. **Add a voltage divider resistor** between the Raspberry Pi and Arduino Nano for stable UART communication — communication currently works with an example/test program, but hasn't been finished for the actual control pipeline.
+3. **Extend the stepper motor cables** to improve routing and reduce mechanical strain.
+4. **Decide the autofocus strategy** (once at the start of a scan vs. per-well) — deferred until Y-axis repeatability is confirmed, since autofocus quality depends on the stage actually landing in the same place each time.
 
 ---
 
