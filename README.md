@@ -18,11 +18,16 @@
 
 An automated XYZ microscope stage designed for continuous 24/7 brightfield imaging of biological samples (spheroids) in wellplates. Built around a Raspberry Pi 4 and Arduino Nano V3, the system enables unattended long-term live-cell imaging with motorized focus and sample positioning.
 
+<p align="center">
+  <img src="assets/hardware_photos/physical_prototype.png" width="600"/>
+  <br/><sub>The assembled prototype — wellplate stage, lead screws, and objective column.</sub>
+</p>
+
 | Feature | Specification |
 | :--- | :--- |
 | Axes | X, Y, Z (independent translational) |
 | Linear Resolution | 5 µm/step (full-step) |
-| Travel (Z) | TBD (To Be Determined) |
+| Travel (Z) | ~15 mm |
 | Motor Driver | DRV8825 |
 | Controller | Arduino Nano V3 + Raspberry Pi 4 |
 | Camera | Raspberry Pi HQ Camera (IMX477) |
@@ -63,6 +68,14 @@ This project's own angle: a stage sized and optically configured specifically fo
 | Flexible Coupler | 5 mm to 8 mm | 3 |
 | Linear Rail | MGN12H | 3 |
 | Aluminum Extrusion | Alpro, various lengths | — |
+
+#### Enclosure (design only — not yet fabricated)
+
+<p align="center">
+  <img src="assets/hardware_photos/enclosure_render.png" width="450"/>
+</p>
+
+> This protective enclosure has been designed in CAD but not yet 3D-printed or fitted to the prototype — it's not part of the assembled hardware shown elsewhere in this README.
 
 ### 2. Motion Calculation
 
@@ -274,6 +287,34 @@ confirmed by the blue-dominated contour.
 #### Insight
 
 All three materials show safe stress distribution under gravity-only loading, with minimum safety factors well above 2 across the entire structure. Aluminum 6061 offers the best mechanical performance — lowest displacement (~0.017 mm) and highest safety factor (4.12) — but requires CNC machining which significantly increases cost and lead time for an iterative research prototype. PLA-Basic has the lowest safety factor (3.02) and highest displacement (0.11 mm) due to the absence of carbon fiber reinforcement. PLA-CF was selected as the optimal material, offering a higher safety factor than PLA-Basic (4.03), lower displacement (0.089 mm), and the same ease of 3D printing — making it the most practical choice for this stage of development.
+
+#### Wellplate Holder Plate — Material Comparison
+
+A second static load analysis (gravity only) was run on the wellplate holder plate — the larger structural plate that carries the entire 96-well plate — using the same three candidate materials.
+
+<table>
+  <tr><th align="center">PLA-Basic</th><th align="center">PLA-CF</th><th align="center">Aluminum 6061</th></tr>
+  <tr>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_basic_stress.png" width="260"/></td>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_cf_stress.png" width="260"/></td>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_alum_stress.png" width="260"/></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_basic_disp.png" width="260"/></td>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_cf_disp.png" width="260"/></td>
+    <td align="center"><img src="assets/stress_analysis_results/wellplate_holder_alum_disp.png" width="260"/></td>
+  </tr>
+</table>
+
+| Metric | PLA-Basic | PLA-CF | Aluminum 6061 |
+| :--- | :---: | :---: | :---: |
+| Max Von Mises stress | 22.27 MPa | 21.89 MPa | 10.27 MPa |
+| Max Displacement | 0.136 mm | 0.131 mm | 0.049 mm |
+| Yield Strength (as configured in Inventor) | 34 MPa | 34 MPa | 275 MPa |
+
+#### Insight
+
+Same three-material comparison, different part — the plate that carries the entire wellplate. All three materials keep stress comfortably below their configured yield strength. PLA-CF was again the practical choice here, for the same reason as the stage plate: adequate stiffness at a fraction of the cost and lead time of machining aluminum.
 
 ---
 
@@ -769,6 +810,11 @@ Same phase-correlation method as the X-axis test, moving between well A1 and wel
 
 The Y-axis is measurably less consistent than X and Z: mean error (0.37 µm) is about 3× the X-axis's, and the standard deviation (0.38 µm) is almost as large as the mean itself — several cycles show a sharp displacement spike (up to 1.71 µm) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms (sub-2-micron), but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
 
+<p align="center">
+  <img src="assets/hardware_photos/stage_motion.gif" width="450"/>
+  <br/><sub>The stage in motion during an automated scan — illustrative of the general motion behavior, not an isolated measurement of the Y-axis defect above.</sub>
+</p>
+
 ---
 
 ### 9. Z-Axis Focus Repeatability
@@ -820,7 +866,18 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
   <img src="assets/thermal_results/wellplate.jpeg" width="200"/>
 </p>
 
-> 📝 **TBD:** Add peak temperatures per motor, wellplate temperature, and acceptable operating range.
+Readings taken directly off the thermal camera's on-screen measurement points:
+
+| Target | Measured point temperature | Frame center |
+| :--- | :--- | :--- |
+| X motor | up to 44.2°C | 30.0°C |
+| Y motor | up to 45.8°C | 25.6°C |
+| Z motor | up to 41.3°C | 41.3°C |
+| Wellplate | 24.6–25.0°C across all points | 24.6°C |
+
+Each frame also reports a "Max" of ~55°C, consistent across all four shots regardless of target — likely an unrelated hot spot elsewhere in the camera's field of view rather than the motor or wellplate itself, so it isn't included as a per-component reading above.
+
+The motors run warm (low-to-mid 40s °C) under test, but the wellplate itself stays essentially at room temperature (~24–25°C) — which is the reading that actually matters for keeping live cell samples viable during a 24/7 run inside an incubator.
 
 ---
 
@@ -832,7 +889,11 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
 
 ### 12. Mechanical Insight
 
-> 📝 **TBD:** Add final design decisions and rationale per subsection.
+Across every structural analysis in this section, the same pattern holds: **stress was never the limiting factor — stiffness (displacement) was.** The stage plate, the wellplate holder plate, the Z-frame, and the motor brackets all showed comfortable margin on stress even in their original designs; what actually needed fixing was how much they physically flexed under load, since flex translates directly into focus drift and positioning error in a system built around micron-scale repeatability.
+
+PLA-CF was chosen as the standard material for exactly this reason — it isn't the stiffest option available (aluminum is, in both material comparisons above), but it's stiff enough for every part tested, and dramatically easier and cheaper to iterate on via 3D printing. That iteration speed mattered more for a prototype still being revised part by part than aluminum's extra stiffness would have. Where a design genuinely needed more stiffness (the Z bracket, the Z-frame), the fix was structural — adding cross-bracing — rather than a material swap.
+
+The X and Z axes responded well to this approach: the Z bracket redesign essentially solved its flex problem outright, and the Z-frame shortened as requested without giving up stiffness. The Y-axis is the outlier — even after the same kind of redesign, it remains the least stiff and least repeatable axis by a wide margin (see [Design Iteration](#5-design-iteration) and [Y-Axis Repeatability](#8-y-axis-repeatability)), which is why it's the top item in [Future Work](#future-work) rather than considered solved.
 
 ---
 
@@ -875,11 +936,19 @@ The schematic is organized into 4 sheets:
 
 ### 3. Calculations
 
-> 📝 **TBD:** Add power budget, current calculations, and signal flow description.
+**Power budget (approximate, based on component ratings — not bench-measured):**
+
+- **12V motor rail** (Meanwell LRS-100-12, 100W / 8.3A): three NEMA17 42-40 steppers via DRV8825 drivers, typically drawing roughly 1–1.5A per phase for this motor class. Worst case — all three axes driven at once — is around 3–4.5A, comfortably under the 8.3A rating. In practice this stage rarely drives more than one or two axes simultaneously.
+- **5V logic rail** (Meanwell LRS-35-5, 35W / 7A): Raspberry Pi 4 (up to ~3A under load) plus the level shifter, limit switches, and the Arduino's logic-side draw — well within the 7A rating, with the 470µF bulk capacitor there specifically to absorb the Pi's inrush current rather than let it sag the rail.
+
+**Signal flow:** AC mains → IEC inlet → fused split into the two DC rails → 12V rail fans out through three TVS-protected DRV8825 drivers to the steppers; 5V rail powers the Pi and Arduino directly, with the level shifter sitting between their GPIO/UART lines.
 
 ### 4. Electrical Insight
 
-> 📝 **TBD:** Add design decisions — e.g. dual PSU rationale, ground separation strategy, driver protection.
+- **Dual PSU instead of one:** splitting logic (5V) and motors (12V) onto separate supplies keeps the noisy, current-hungry stepper drivers from sagging or injecting noise into the sensitive Pi/Arduino logic rail every time a motor starts or stops.
+- **Fused per rail, not just at the mains inlet:** the slow-blow fuse at the IEC inlet protects the AC side, but independent fuses on each DC rail (3A logic, 5A motor) mean a fault on one rail doesn't necessarily take the other down with it.
+- **TVS diodes on every motor driver:** steppers generate back-EMF when they decelerate or stop abruptly — the TVS diodes clamp that voltage spike before it reaches (and potentially damages) the DRV8825 driver ICs.
+- **Level shifter between Pi and Arduino:** the Pi's GPIO runs at 3.3V and the Arduino Nano at 5V — the bidirectional shifter is required here, not optional, to avoid over-volting the Pi's inputs or under-driving the Arduino's.
 
 ---
 
@@ -1018,7 +1087,9 @@ Recommended storage: USB SSD 256 GB connected to Raspberry Pi.
 
 ### 5. Software Insight
 
-> 📝 **TBD:** Add design decisions — e.g. RPi vs Arduino task separation, communication protocol, data pipeline.
+Splitting responsibilities between the Raspberry Pi and Arduino wasn't arbitrary — it maps each task to the processor actually suited for it. Motor step/direction pulses need precise timing and can't tolerate an OS scheduler getting in the way, so that stays on the Arduino's bare-metal loop. Everything else — the web server, experiment scheduling, image capture and processing — benefits from a full OS, filesystem, and Python ecosystem, so that lives on the Pi. UART between them is a deliberately simple choice: a small, well-understood command set (`A1`, `home`, `scan`, `stop`, …) that's easy to debug over a serial monitor, instead of a heavier protocol that would add complexity without adding capability at this scale.
+
+The data pipeline (raw + grayscale PNG side by side, per-well folders, one `metadata.json` per experiment) is deliberately redundant: keeping the raw capture alongside the processed grayscale version means a bug in the grayscale conversion — or a future need for a different processing pipeline entirely — doesn't require re-running the physical experiment to recover the original data.
 
 ---
 
