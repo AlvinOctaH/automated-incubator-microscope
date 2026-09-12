@@ -376,7 +376,17 @@ Structural analysis was conducted on motor brackets for all three axes. Each bra
 </p>
 </details>
 
-> 📝 **TBD:** Add max stress, safety factor, and design change rationale for each axis.
+Only displacement was evaluated for these brackets (no stress/safety-factor contour was generated for this analysis, unlike the stage-plate and Z-frame studies above).
+
+| Axis | Previous Version (max, mm) | New Version (max, mm) | Improvement |
+| :---: | :---: | :---: | :---: |
+| X | 0.04368 | 0.01149 | ~74% reduction |
+| Y | 0.4024 | 0.2984 | ~26% reduction |
+| Z | 0.003305 | 0.0000134 | ~99.6% reduction |
+
+#### Insight
+
+The Z bracket redesign (adding diagonal cross-bracing, same approach as the [Z-Frame Redesign](#4-z-frame-redesign-old-vs-new) above) essentially solved its flex problem outright. The X bracket saw a solid improvement. The Y bracket is the clear outlier: even after redesign it's still roughly **26× more flexible than X and ~22,000× more flexible than Z** in absolute terms — this is the mechanical root cause behind the [Y-Axis Repeatability](#8-y-axis-repeatability) result being noisier than X and Z, and why the Y-axis assembly remains the top item in [Future Work](#future-work).
 
 ---
 
