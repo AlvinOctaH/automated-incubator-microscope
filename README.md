@@ -1,4 +1,4 @@
-# 🔬 Automation Incubator Microscope
+# 🔬 Automated Incubator Microscope
 
 <div align="center">
 
@@ -414,6 +414,10 @@ Imaging validation was conducted in two stages: first using microbeads as a cont
 
 ---
 
+##### Stage 1 — Microbead Imaging
+
+Microbeads were used as a controlled reference target to characterize optical performance across tube lengths. Each tube length was tested at two objective configurations (10x and 4x) to evaluate sharpness, chromatic aberration, and overall image quality before proceeding to biological samples.
+
 **Reference — Professional Lab Microscope**
 
 Images captured using a professional laboratory microscope as ground truth reference for image quality comparison.
@@ -432,12 +436,6 @@ Images captured using a professional laboratory microscope as ground truth refer
     <td align="center"><img src="assets/imaging_results/data_microbeads/professional_microsope/using10x_microscope.jpg" width="200"/></td>
   </tr>
 </table>
-
----
-
-##### Stage 1 — Microbead Imaging
-
-Microbeads were used as a controlled reference target to characterize optical performance across tube lengths. Each tube length was tested at two objective configurations (10x and 4x) to evaluate sharpness, chromatic aberration, and overall image quality before proceeding to biological samples.
 
 ###### 🔬 Objective Lens 10x
 
@@ -567,17 +565,94 @@ Microbeads were used as a controlled reference target to characterize optical pe
 
 ##### Stage 2 — Spheroid Imaging
 
-> 🚧 **In progress** — spheroid imaging results to be added after biological sample testing.
+TBD.
 
-Images will be captured at the selected tube length(s) from Stage 1 using actual spheroid samples in a 96-well plate. Results will include both 10x and 4x objective configurations.
+**Reference — Professional Lab Microscope**
+
+Images captured using a professional laboratory microscope as ground truth reference for image quality comparison.
+
+<table>
+  <tr>
+    <th align="center">Magnification</th>
+    <th align="center">Image</th>
+  </tr>
+  <tr>
+    <td align="center">4x</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/professional_microscope/using4x_microscope.jpg" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center">10x</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/professional_microscope/using10x_microscope.jpg" width="200"/></td>
+  </tr>
+</table>
 
 ###### 🔬 Objective Lens 10x
 
-> 📝 **TBD:** Add spheroid images at selected tube length(s).
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Spheroids</th>
+    <th align="center">Spheroids + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td>80 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
+
+---
 
 ###### 🔬 Objective Lens 4x
 
-> 📝 **TBD:** Add spheroid images at selected tube length(s).
+<table>
+  <tr>
+    <th align="center">#</th>
+    <th>Tube Length</th>
+    <th align="center">Spheroids</th>
+    <th align="center">Spheroids + Light</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td>160 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td>84.2 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td>80 mm</td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td>TBD</td>
+  </tr>
+</table>
 
 ---
 
@@ -589,7 +664,45 @@ Images will be captured at the selected tube length(s) from Stage 1 using actual
 
 ---
 
-### 6. Thermal Consideration
+### 6. Z-Axis Focus Repeatability
+
+To verify that the anti-backlash nut effectively eliminates positional error on the Z-axis, a repeatability test was conducted after assembly.
+[📄 View Full Analysis Result (PDF)](./mechanical/focus_report.html)
+
+#### Method
+
+The Z-axis was positioned to a reference focal plane and set as baseline. For each cycle, the stage moves down a fixed number of steps then returns to baseline. A sharpness score is computed from each captured image using **Laplacian Variance** — a focus metric that measures high-frequency edge content in the image. Higher variance = sharper image = better focus.
+
+$$\text{Sharpness} = \text{Var}\left(\nabla^2 I\right)$$
+
+**Coefficient of Variation (CV%)** is used as the repeatability indicator — lower CV means the Z-axis consistently returns to the same focal plane.
+
+#### Test Parameters
+
+| Parameter | Value |
+| :--- | :--- |
+| Cycles | 50 |
+| Z displacement per cycle | 500 steps (2.5 mm) |
+| Focus metric | Laplacian Variance |
+
+#### Results
+
+| Metric | Value |
+| :--- | :--- |
+| Mean sharpness | 3.3123 |
+| Std Dev | 0.0467 |
+| Min / Max | 3.1869 / 3.3926 |
+| **CV (%)** | **1.41%** |
+
+CV of **1.41%** — well below the 2% threshold for excellent repeatability. Visual inspection of all 50 images confirmed consistent focus with no visible defocus across any cycle.
+
+#### Insight
+
+The anti-backlash nut successfully eliminates Z-axis positional error. The lead screw + anti-backlash nut + NEMA17 combination delivers consistent focal plane return across repeated cycles, confirming suitability for long-term automated imaging.
+
+---
+
+### 7. Thermal Consideration
 
 Thermal images of each stepper motor and the well plate under 24/7 operating conditions:
 
@@ -604,13 +717,13 @@ Thermal images of each stepper motor and the well plate under 24/7 operating con
 
 ---
 
-### 7. Engineering Drawing
+### 8. Engineering Drawing
 
 > 🚧 **In progress** — engineering drawings and GD&T specifications to be added.
 
 ---
 
-### 8. Mechanical Insight
+### 9. Mechanical Insight
 
 > 📝 **TBD:** Add final design decisions and rationale per subsection.
 
