@@ -1,6 +1,6 @@
 // ============================================================
 // AUTOMATED INCUBATOR MICROSCOPE — Arduino Nano V3
-// Based on: sketch_oct03a.ino
+// Based on: sketch_oct03a.ino (earlier sketch by a previous intern)
 // Added: 36-well support, Raspi handshake (AT/OK),
 //        stop command, status, plate toggle, custom Z step
 // ============================================================

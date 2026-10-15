@@ -41,6 +41,10 @@ An automated XYZ microscope stage designed for continuous 24/7 brightfield imagi
 - Enable automated brightfield imaging across all 96 wells in serpentine order with minimal user intervention.
 - Minimize contamination risk and preserve spheroid sample integrity throughout continuous long-term experiments.
 
+**Background**
+
+This project continues an existing prototype from a research internship at National Cheng Kung University (Jan–Jun 2026). I redesigned the Z-axis, frame and motor brackets, the power system, and wrote the Flask control panel and the test and analysis scripts. The Arduino firmware extends an earlier sketch (`sketch_oct03a`) written by a previous intern.
+
 ---
 
 ## Related Work
