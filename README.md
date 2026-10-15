@@ -778,17 +778,19 @@ Positioning repeatability was measured using phase correlation on paired images:
   <img src="assets/repeatability_results/x_axis_repeatability_chart.png" width="600"/>
 </p>
 
-| Metric | Value (px) | Value (µm, @ 1.55 µm/px) |
-| :--- | :---: | :---: |
-| Mean distance | 0.082 | 0.13 |
-| Std dev | 0.043 | 0.07 |
-| Max distance | 0.170 | 0.26 |
-| Mean dx | +0.055 | — |
-| Mean dy | +0.014 | — |
+| Metric | Value (px) |
+| :--- | :---: |
+| Mean distance | 0.082 |
+| Std dev | 0.043 |
+| Max distance | 0.170 |
+| Mean dx | +0.055 |
+| Mean dy | +0.014 |
+
+> Results are reported in image pixels, the unit phase correlation actually measures. An earlier version converted them to µm using the 1.55 µm sensor pixel size, which does not account for optical magnification and overstated the stage-space distance. A µm value needs the effective µm/px at the sample plane, which was not recorded for this test.
 
 #### Insight
 
-Sub-micron repeatability (mean 0.13 µm, max 0.26 µm) — the X-axis consistently returns to the same position across all 50 cycles, with no visible trend or drift in the displacement plot.
+Sub-pixel repeatability (mean 0.082 px, max 0.170 px) — the X-axis consistently returns to the same position across all 50 cycles, with no visible trend or drift in the displacement plot.
 
 ---
 
@@ -800,17 +802,17 @@ Same phase-correlation method as the X-axis test, moving between well A1 and wel
   <img src="assets/repeatability_results/y_axis_repeatability_chart.png" width="600"/>
 </p>
 
-| Metric | Value (px) | Value (µm, @ 1.55 µm/px) |
-| :--- | :---: | :---: |
-| Mean distance | 0.241 | 0.37 |
-| Std dev | 0.242 | 0.38 |
-| Max distance | 1.102 | 1.71 |
-| Mean dx | +0.051 | — |
-| Mean dy | −0.013 | — |
+| Metric | Value (px) |
+| :--- | :---: |
+| Mean distance | 0.241 |
+| Std dev | 0.242 |
+| Max distance | 1.102 |
+| Mean dx | +0.051 |
+| Mean dy | −0.013 |
 
 #### Insight
 
-The Y-axis is measurably less consistent than X and Z: mean error (0.37 µm) is about 3× the X-axis's, and the standard deviation (0.38 µm) is almost as large as the mean itself — several cycles show a sharp displacement spike (up to 1.71 µm) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms (sub-2-micron), but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
+The Y-axis is measurably less consistent than X and Z: mean error (0.241 px) is about 3× the X-axis's, and the standard deviation (0.242 px) is almost as large as the mean itself — several cycles show a sharp displacement spike (up to 1.10 px) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms (about one pixel at worst), but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
 
 <p align="center">
   <img src="assets/hardware_photos/stage_motion.gif" width="450"/>
