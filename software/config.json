@@ -1,0 +1,13 @@
+{
+  "storage_path": "/home/pi/microscope_data",
+  "capture_interval_hours": 2,
+  "settle_delay_ms": 500,
+  "autofocus_z_range": 20,
+  "autofocus_step_size": 1,
+  "experiment_id": "",
+  "end_time": "",
+  "plate_type": 96,
+  "folder_structure": "DAY/BATCH",
+  "serial_port": "/dev/ttyUSB0",
+  "baud_rate": 115200
+}

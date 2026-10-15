@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incubator Microscope</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#eef1f6;--surface:#fff;--s2:#f7f9fc;--s3:#eef1f6;
+  --border:#dde3ed;--border2:#c5cfe0;
+  --accent:#1a6fb5;--accent-lt:#e8f2fc;--accent-md:#3b8fd4;
+  --ok:#15803d;--ok-lt:#dcfce7;--warn:#b45309;--warn-lt:#fef3c7;
+  --err:#b91c1c;--err-lt:#fee2e2;
+  --txt:#111827;--txt2:#374151;--txt3:#6b7280;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.05);
+  --sh-md:0 4px 14px rgba(0,0,0,.09),0 2px 4px rgba(0,0,0,.05);
+  --r:6px;--rl:10px;
+}
+html,body{height:100%;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13px;line-height:1.5}
+
+/* ── Header ── */
+header{display:flex;align-items:center;gap:12px;padding:0 18px;height:52px;
+  background:var(--surface);border-bottom:2.5px solid var(--accent);
+  box-shadow:var(--sh);position:sticky;top:0;z-index:200}
+.logo{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px}
+.logo-sub{color:var(--txt3);font-weight:400}
+.hdr-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.pill{display:flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;
+  background:var(--s3);border:1px solid var(--border);
+  font-family:var(--mono);font-size:9px;font-weight:600;color:var(--txt3);letter-spacing:.07em}
+.pill .dot{width:6px;height:6px;border-radius:50%;background:var(--err);flex-shrink:0}
+.pill .dot.on{background:var(--ok);box-shadow:0 0 0 2px var(--ok-lt)}
+.pill .dot.warn{background:var(--warn);box-shadow:0 0 0 2px var(--warn-lt)}
+.run-badge{padding:3px 10px;border-radius:20px;font-family:var(--mono);font-size:9px;
+  font-weight:700;letter-spacing:.08em;background:var(--err-lt);color:var(--err);border:1px solid #fca5a5}
+.run-badge.on{background:var(--ok-lt);color:var(--ok);border-color:#86efac}
+
+/* ── Layout ── */
+.main{display:grid;grid-template-columns:256px 1fr 268px;height:calc(100vh - 52px);overflow:hidden}
+.panel{background:var(--surface);overflow-y:auto;border-right:1px solid var(--border);padding:14px}
+.panel:last-child{border-right:none;border-left:1px solid var(--border)}
+.center{padding:14px;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;gap:12px}
+
+/* ── Typography ── */
+.ptitle{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--txt3);margin-bottom:12px;
+  padding-bottom:7px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.slabel{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--txt3);margin-bottom:5px}
+hr{border:none;border-top:1px solid var(--border);margin:12px 0}
+
+/* ── Cards ── */
+.card{background:var(--s2);border:1px solid var(--border);border-radius:var(--rl);
+  padding:12px;box-shadow:var(--sh)}
+.card.warn-border{border-color:#fcd34d;background:var(--warn-lt)}
+.card.ok-border{border-color:#86efac;background:var(--ok-lt)}
+.card.accent-border{border-color:var(--accent);background:var(--accent-lt)}
+
+/* ── Form ── */
+.field{margin-bottom:9px}
+.field label{display:block;font-size:11px;color:var(--txt2);margin-bottom:3px;font-weight:500}
+input,select{width:100%;padding:6px 8px;background:var(--surface);border:1px solid var(--border2);
+  color:var(--txt);font-family:var(--mono);font-size:11px;border-radius:var(--r);
+  outline:none;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,111,181,.11)}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  padding:7px 12px;border:1px solid var(--border2);background:var(--surface);
+  color:var(--txt2);font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.03em;border-radius:var(--r);cursor:pointer;
+  transition:all .12s;white-space:nowrap;box-shadow:var(--sh)}
+.btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);box-shadow:var(--sh-md)}
+.btn:active{transform:scale(.97);box-shadow:none}
+.btn:disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.btn.primary:hover{background:#155d9e;border-color:#155d9e;color:#fff}
+.btn.danger{border-color:#fca5a5;color:var(--err);background:var(--err-lt)}
+.btn.danger:hover{background:#fecaca;border-color:var(--err)}
+.btn.ok{border-color:#86efac;color:var(--ok);background:var(--ok-lt)}
+.btn.sm{padding:4px 8px;font-size:9px}
+.btn.full{width:100%}
+.btn-row{display:flex;gap:5px;flex-wrap:wrap}
+
+/* ── Plate toggle ── */
+.ptog-wrap{display:flex;gap:3px;margin-bottom:12px}
+.ptog{flex:1;padding:8px;text-align:center;border:1px solid var(--border2);
+  background:var(--s3);color:var(--txt3);font-family:var(--mono);font-size:10px;
+  font-weight:600;border-radius:var(--r);cursor:pointer;transition:all .13s}
+.ptog .ptog-sub{font-size:8px;opacity:.7;display:block;margin-top:1px}
+.ptog.on{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:var(--sh)}
+
+/* ── Live Feed ── */
+.feed-wrap{background:#000;border-radius:var(--rl);overflow:hidden;
+  position:relative;aspect-ratio:4/3;box-shadow:var(--sh-md)}
+.feed-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+.feed-overlay{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));
+  padding:10px 12px;display:flex;align-items:center;justify-content:space-between}
+.feed-label{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.8);font-weight:500}
+.feed-sharp{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff}
+.sharp-bar-wrap{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+.sharp-bar-bg{width:80px;height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.sharp-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);transition:width .4s}
+.feed-no-cam{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;color:rgba(255,255,255,.4);font-family:var(--mono);font-size:11px;gap:8px}
+.feed-no-cam .big{font-size:32px}
+
+/* ── Z Control ── */
+.z-display{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--accent);
+  text-align:center;padding:8px;background:var(--accent-lt);border:1px solid #bfdbfe;
+  border-radius:var(--r);margin-bottom:8px}
+.z-presets{display:flex;gap:3px;margin-bottom:8px}
+.z-pre{flex:1;padding:4px;text-align:center;font-family:var(--mono);font-size:9px;
+  font-weight:600;border:1px solid var(--border2);border-radius:4px;
+  cursor:pointer;background:var(--s3);color:var(--txt3);transition:all .12s}
+.z-pre.on,.z-pre:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.z-main-row{display:grid;grid-template-columns:1fr auto 1fr;gap:5px;align-items:center;margin-bottom:6px}
+.z-custom-row{display:flex;gap:4px}
+
+/* ── Well Plate Grid ── */
+.plate-wrap{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:14px;box-shadow:var(--sh)}
+.plate-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.plate-title{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--txt2)}
+.current-well-badge{margin-left:auto;display:inline-flex;align-items:center;padding:2px 8px;
+  border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:700;
+  background:var(--accent-lt);color:var(--accent);border:1px solid #93c5fd}
+.plate-container{overflow-x:auto}
+.plate-grid{display:grid;gap:3px}
+.plate-grid.p96{grid-template-columns:16px repeat(12,1fr)}
+.plate-grid.p36{grid-template-columns:16px repeat(6,1fr)}
+.col-lbl,.row-lbl{font-family:var(--mono);font-size:8px;font-weight:600;
+  color:var(--txt3);display:flex;align-items:center;justify-content:center}
+.row-lbl{justify-content:flex-end;padding-right:3px}
+.well{aspect-ratio:1;border-radius:50%;background:var(--s3);
+  border:1.5px solid var(--border2);cursor:pointer;transition:all .1s;
+  min-width:0;position:relative}
+.well:hover{border-color:var(--accent);background:var(--accent-lt);transform:scale(1.15);z-index:2}
+.well.current{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(26,111,181,.25)}
+.well-tip{display:none;position:absolute;bottom:115%;left:50%;transform:translateX(-50%);
+  background:var(--txt);color:#fff;font-family:var(--mono);font-size:9px;
+  padding:2px 6px;border-radius:3px;white-space:nowrap;z-index:10;pointer-events:none}
+.well:hover .well-tip{display:block}
+
+/* ── Stage buttons under grid ── */
+.stage-controls{display:flex;flex-direction:column;gap:6px}
+
+/* ── Stats ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat-box{background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:9px 10px}
+.stat-val{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--accent);line-height:1.1}
+.stat-lbl{font-family:var(--mono);font-size:8px;color:var(--txt3);margin-top:2px;
+  letter-spacing:.08em;text-transform:uppercase}
+.stat-wide{grid-column:1/-1}
+.stat-box.ok-box{border-color:#86efac;background:var(--ok-lt)}
+.stat-box.ok-box .stat-val{color:var(--ok)}
+
+/* ── Progress ring ── */
+.prog-ring-wrap{display:flex;align-items:center;gap:14px}
+.prog-wrap{position:relative;width:64px;height:64px;flex-shrink:0}
+.prog-wrap svg{transform:rotate(-90deg)}
+.prog-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.prog-num{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ok);line-height:1}
+.prog-sub{font-family:var(--mono);font-size:8px;color:var(--ok);opacity:.7;margin-top:1px}
+.countdown{font-family:var(--mono);font-size:10px;color:var(--txt3);text-align:center;margin-top:5px}
+
+/* ── Drive selector ── */
+.drive-list{display:flex;flex-direction:column;gap:5px}
+.drive-item{display:flex;align-items:center;gap:8px;padding:7px 9px;
+  border:1px solid var(--border2);border-radius:var(--r);
+  cursor:pointer;background:var(--s3);transition:all .12s}
+.drive-item:hover,.drive-item.on{border-color:var(--accent);background:var(--accent-lt);
+  box-shadow:0 0 0 2px rgba(26,111,181,.12)}
+.drive-icon{font-size:16px;flex-shrink:0}
+.drive-name{font-size:11px;font-weight:500}
+.drive-path{font-family:var(--mono);font-size:9px;color:var(--txt3)}
+.drive-size{font-family:var(--mono);font-size:9px;color:var(--txt3);margin-left:auto;flex-shrink:0}
+
+/* ── Folder preview ── */
+.folder-preview{font-family:var(--mono);font-size:9px;color:var(--txt2);
+  background:var(--s3);border:1px solid var(--border);border-radius:var(--r);
+  padding:7px 9px;line-height:1.8;white-space:pre;margin-top:5px;overflow-x:auto}
+
+/* ── Log ── */
+.log-wrap{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);
+  padding:8px 10px;font-family:var(--mono);font-size:10px;
+  height:140px;overflow-y:auto;line-height:1.65}
+.log-line{padding:1px 0;color:var(--txt3)}
+.log-line.ok{color:var(--ok)}
+.log-line.err{color:var(--err)}
+.log-line.warn{color:var(--warn)}
+.log-line.info{color:var(--accent);font-weight:500}
+
+/* ── Eject card ── */
+.eject-status{display:none;margin-top:8px;font-family:var(--mono);font-size:10px;
+  color:var(--warn);font-weight:600;text-align:center;padding:5px;
+  background:var(--warn-lt);border:1px solid #fcd34d;border-radius:4px}
+
+/* ── Modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);backdrop-filter:blur(3px);
+  z-index:300;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--rl);
+  padding:22px 24px;max-width:320px;width:90%;box-shadow:var(--sh-md);
+  transform:scale(.95);transition:transform .2s}
+.modal-overlay.show .modal{transform:scale(1)}
+.modal-title{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--txt);margin-bottom:8px}
+.modal-body{font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+
+/* ── Toast ── */
+#toast{position:fixed;bottom:18px;right:18px;background:var(--surface);
+  border:1px solid var(--border2);border-radius:var(--r);padding:8px 14px;
+  font-family:var(--mono);font-size:11px;color:var(--txt);box-shadow:var(--sh-md);
+  opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:400}
+#toast.show{opacity:1;transform:translateY(0)}
+#toast.ok{border-color:#86efac;color:var(--ok)}
+#toast.err{border-color:#fca5a5;color:var(--err)}
+#toast.warn{border-color:#fcd34d;color:var(--warn)}
+
+/* ── Misc ── */
+.kbadge{display:inline-block;font-family:var(--mono);font-size:8px;
+  background:var(--s3);border:1px solid var(--border2);border-radius:3px;
+  padding:0 4px;color:var(--txt3);margin-left:3px;vertical-align:middle}
+.storage-est{font-family:var(--mono);font-size:10px;color:var(--txt2);line-height:1.7;white-space:pre}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+<div style="display:grid;grid-template-rows:52px 1fr;min-height:100vh">
+
+<!-- HEADER -->
+<header>
+  <div class="logo">🔬 NCKU <span style="color:var(--border2)">/</span> <span class="logo-sub">incubator-microscope</span></div>
+  <div style="font-family:var(--mono);font-size:9px;color:var(--txt3);margin-left:12px;display:flex;gap:6px">
+    <span style="background:var(--s3);border:1px solid var(--border);border-radius:4px;padding:2px 6px">H=Home</span>
+    <span style="background:var(--s3);border:1px solid var(--border);border-radius:4px;padding:2px 6px">Space=Stop</span>
+    <span style="background:var(--s3);border:1px solid var(--border);border-radius:4px;padding:2px 6px">↑↓=Z</span>
+  </div>
+  <div class="hdr-right">
+    <div class="pill"><div class="dot" id="hdr-ard"></div>ARDUINO</div>
+    <div class="pill"><div class="dot" id="hdr-cam"></div>CAMERA</div>
+    <div class="pill" id="hdr-plate">96-WELL</div>
+    <span id="hdr-run" class="run-badge">IDLE</span>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ════ LEFT PANEL ════ -->
+<div class="panel">
+  <div class="ptitle">⚙ Setup & Controls</div>
+
+  <!-- Connection -->
+  <div style="margin-bottom:14px">
+    <div class="slabel">Arduino Port</div>
+    <div style="display:flex;gap:5px;margin-bottom:6px">
+      <select id="sel-port" style="font-size:10px;flex:1"></select>
+      <button class="btn sm" onclick="refreshPorts()">↻</button>
+    </div>
+    <button class="btn primary full" id="btn-connect" onclick="connectArduino()">Connect Arduino</button>
+  </div>
+
+  <!-- Camera init -->
+  <div style="margin-bottom:14px">
+    <div class="slabel">Camera</div>
+    <button class="btn full" id="btn-cam-init" onclick="initCamera()">🎥 Initialise Camera</button>
+  </div>
+
+  <hr>
+
+  <!-- Plate type -->
+  <div style="margin-bottom:4px">
+    <div class="slabel">Wellplate Type</div>
+    <div class="ptog-wrap">
+      <div class="ptog on" id="ptog-96" onclick="setPlate(96)">96-WELL<span class="ptog-sub">8 × 12</span></div>
+      <div class="ptog"    id="ptog-36" onclick="setPlate(36)">36-WELL<span class="ptog-sub">6 × 6</span></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Z Focus -->
+  <div>
+    <div class="slabel">Focus — Z Axis</div>
+    <div class="card" style="padding:10px">
+      <div class="z-display" id="z-display">Z = 0</div>
+      <div class="slabel" style="margin-bottom:3px">Step Size</div>
+      <div class="z-presets">
+        <div class="z-pre on" onclick="setZPre(this,10)">10</div>
+        <div class="z-pre"    onclick="setZPre(this,50)">50</div>
+        <div class="z-pre"    onclick="setZPre(this,100)">100</div>
+        <div class="z-pre"    onclick="setZPre(this,500)">500</div>
+        <div class="z-pre"    onclick="setZPre(this,1000)">1K</div>
+      </div>
+      <div class="z-main-row">
+        <button class="btn" onclick="doZ('U')" style="justify-content:center">▲ Up <span class="kbadge">↑</span></button>
+        <button class="btn sm" onclick="doSetzero()" title="Set Z = 0">⊙</button>
+        <button class="btn" onclick="doZ('D')" style="justify-content:center">▼ Down <span class="kbadge">↓</span></button>
+      </div>
+      <div class="z-custom-row">
+        <input type="number" id="z-custom" placeholder="Custom steps" min="1">
+        <button class="btn sm" onclick="doZCustom('U')">▲</button>
+        <button class="btn sm" onclick="doZCustom('D')">▼</button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Replace Plate -->
+  <div>
+    <div class="slabel">Replace Wellplate</div>
+    <div class="card" id="eject-card">
+      <div style="font-size:11px;color:var(--txt2);margin-bottom:8px;line-height:1.5">
+        Eject stage to swap plate, then return to home.
+      </div>
+      <div class="btn-row">
+        <button class="btn full" id="btn-eject" onclick="confirmThen('Eject stage for plate replacement?',doEject)" style="flex:1">⏏ Eject</button>
+        <button class="btn ok full" id="btn-return" onclick="confirmThen('Return stage to home?',doReturn)" style="flex:1" disabled>↩ Return</button>
+      </div>
+      <div class="eject-status" id="eject-status">⚠ Stage ejected — swap plate then press Return</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CENTER ════ -->
+<div class="center">
+
+  <!-- Live Camera Feed -->
+  <div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--txt2)">LIVE CAMERA</div>
+      <button class="btn sm" onclick="captureManual()" id="btn-capture">📷 Capture & Save</button>
+    </div>
+    <div class="feed-wrap" id="feed-wrap">
+      <div class="feed-no-cam" id="feed-placeholder">
+        <span class="big">📷</span>
+        <span>Camera not initialised</span>
+        <span style="font-size:9px;opacity:.6">Click "Initialise Camera" in the left panel</span>
+      </div>
+      <img id="feed-img" src="" style="display:none" alt="live feed">
+      <div class="feed-overlay" id="feed-overlay" style="display:none">
+        <span class="feed-label" id="feed-well-label">—</span>
+        <span class="feed-sharp" id="feed-sharp">—</span>
+      </div>
+      <div class="sharp-bar-wrap" id="sharp-bar-wrap" style="display:none">
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.7);margin-bottom:2px">SHARPNESS</div>
+        <div class="sharp-bar-bg"><div class="sharp-bar-fill" id="sharp-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Well Plate + Stage Controls -->
+  <div class="plate-wrap">
+    <div class="plate-header">
+      <span class="plate-title">WELLPLATE — Click a well to move stage</span>
+      <span class="current-well-badge" id="well-badge">—</span>
+    </div>
+    <div class="plate-container">
+      <div id="plate-grid" class="plate-grid p96"></div>
+    </div>
+
+    <!-- Stage Controls directly below grid -->
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+      <div class="btn-row">
+        <button class="btn" style="flex:1" onclick="confirmThen('Home XY axes to limit switches?',doHome)">⌂ Home XY <span class="kbadge">H</span></button>
+        <button class="btn primary" style="flex:2" onclick="confirmThen('Start full serpentine scan?',doScan)">⊞ Scan All Wells</button>
+        <button class="btn danger" onclick="doStop()">■ Stop <span class="kbadge">SPC</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Log -->
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+      <span style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--txt3);text-transform:uppercase">System Log</span>
+      <div style="display:flex;gap:5px">
+        <button class="btn sm" id="btn-log-pause" onclick="toggleLogPause()">⏸ Pause</button>
+        <button class="btn sm" onclick="clearLog()">✕ Clear</button>
+      </div>
+    </div>
+    <div class="log-wrap" id="log-box"></div>
+  </div>
+</div>
+
+<!-- ════ RIGHT PANEL ════ -->
+<div class="panel">
+  <div class="ptitle">🧪 Experiment</div>
+
+  <!-- Live Status -->
+  <div style="margin-bottom:14px">
+    <div class="slabel">Status</div>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-val" id="stat-round">0</div>
+        <div class="stat-lbl">Round</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" id="stat-images">0</div>
+        <div class="stat-lbl">Images</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" id="stat-well" style="font-size:15px">—</div>
+        <div class="stat-lbl">Current Well</div>
+      </div>
+      <div class="stat-box ok-box">
+        <div class="stat-val" id="stat-next" style="font-size:11px;line-height:1.3">—</div>
+        <div class="stat-lbl">Next Scan</div>
+      </div>
+      <div class="stat-box stat-wide">
+        <div class="stat-lbl" style="margin-bottom:3px">Experiment End</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--txt2)" id="stat-end">—</div>
+      </div>
+    </div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <!-- Running progress -->
+  <div id="exp-prog-wrap" style="display:none;margin-bottom:14px">
+    <div class="card ok-border">
+      <div class="prog-ring-wrap">
+        <div class="prog-wrap">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#dcfce7" stroke-width="6"/>
+            <circle cx="32" cy="32" r="26" fill="none" stroke="var(--ok)" stroke-width="6"
+              stroke-dasharray="163.4" stroke-dashoffset="163.4" id="prog-circle" stroke-linecap="round"/>
+          </svg>
+          <div class="prog-center">
+            <div class="prog-num" id="prog-num">0</div>
+            <div class="prog-sub">RND</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:9px;font-weight:700;color:var(--ok);letter-spacing:.1em">RUNNING</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--txt2);margin-top:2px" id="prog-well">—</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--txt3);margin-top:1px" id="prog-imgs">0 images</div>
+        </div>
+      </div>
+      <div class="countdown" id="prog-countdown" style="color:var(--ok);margin-top:6px"></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Storage -->
+  <div style="margin-bottom:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+      <div class="slabel" style="margin:0">Storage Device</div>
+      <button class="btn sm" onclick="refreshDrives()">↻ Scan</button>
+    </div>
+    <div class="drive-list" id="drive-list">
+      <div style="color:var(--txt3);font-family:var(--mono);font-size:10px;padding:6px">Detecting...</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Parameters -->
+  <div style="margin-bottom:12px">
+    <div class="slabel">Parameters</div>
+    <div class="field">
+      <label>Experiment ID <span style="font-weight:400;color:var(--txt3)">(optional)</span></label>
+      <input type="text" id="exp-id" placeholder="EXP_001" oninput="updateAll()">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+      <div class="field">
+        <label>Interval (h)</label>
+        <input type="number" id="exp-interval" value="2" min="0.1" step="0.5" oninput="updateAll()">
+      </div>
+      <div class="field">
+        <label>Settle (ms)</label>
+        <input type="number" id="exp-settle" value="500" min="100">
+      </div>
+      <div class="field">
+        <label>AF Z Range</label>
+        <input type="number" id="exp-zrange" value="40" min="1">
+      </div>
+      <div class="field">
+        <label>AF Step</label>
+        <input type="number" id="exp-zstep" value="5" min="1">
+      </div>
+    </div>
+    <div class="field">
+      <label>End Date & Time</label>
+      <input type="datetime-local" id="exp-end" oninput="updateAll()">
+    </div>
+  </div>
+
+  <!-- Folder structure -->
+  <div style="margin-bottom:12px">
+    <div class="slabel">Folder Structure</div>
+    <select id="exp-folder" onchange="updateAll()">
+      <option value="DAY/BATCH">DAY / BATCH  →  DAY1/Batch001/</option>
+      <option value="HOUR">HOUR  →  Hour_0000/</option>
+      <option value="FLAT">FLAT  →  Round001/</option>
+    </select>
+    <div class="folder-preview" id="folder-preview"></div>
+  </div>
+
+  <!-- Storage estimate -->
+  <div style="margin-bottom:14px">
+    <div class="slabel">Storage Estimate</div>
+    <div class="storage-est" id="storage-est">—</div>
+  </div>
+
+  <hr>
+
+  <!-- Start/Stop -->
+  <button class="btn primary full" id="btn-start" onclick="confirmThen('Start experiment with current settings?',startExperiment)" style="margin-bottom:6px">▶ Start Experiment</button>
+  <button class="btn danger full" id="btn-stop-exp" onclick="stopExperiment()" disabled>■ Stop Experiment</button>
+</div>
+
+</div><!-- end main -->
+</div><!-- end app -->
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title">Confirm</div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" id="modal-ok">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// State
+// ══════════════════════════════════════════════
+let plateType      = 96;
+let selectedDrive  = null;
+let currentWell    = "";
+let experimentRunning = false;
+let lastLog        = [];
+let nextScanAt     = null;
+let maxRound       = 0;
+let logPaused      = false;
+let zStep          = 10;
+let cameraReady    = false;
+
+// ══════════════════════════════════════════════
+// Init
+// ══════════════════════════════════════════════
+document.addEventListener("DOMContentLoaded", () => {
+  buildPlate(96);
+  refreshPorts();
+  refreshDrives();
+  loadConfig();
+
+  const d = new Date(); d.setDate(d.getDate()+2);
+  document.getElementById("exp-end").value = d.toISOString().slice(0,16);
+
+  setInterval(pollStatus, 1000);
+  setInterval(updateCountdown, 1000);
+
+  document.addEventListener("keydown", e => {
+    const tag = document.activeElement.tagName;
+    if (tag==="INPUT"||tag==="SELECT") return;
+    if (e.key==="h"||e.key==="H") confirmThen("Home XY axes?", doHome);
+    if (e.key===" ") { e.preventDefault(); doStop(); }
+    if (e.key==="ArrowUp")   { e.preventDefault(); doZ("U"); }
+    if (e.key==="ArrowDown") { e.preventDefault(); doZ("D"); }
+  });
+});
+
+// ══════════════════════════════════════════════
+// Plate Builder
+// ══════════════════════════════════════════════
+function buildPlate(type) {
+  plateType = type;
+  currentWell = "";
+  document.getElementById("well-badge").textContent = "—";
+  const grid = document.getElementById("plate-grid");
+  grid.className = `plate-grid p${type}`;
+  grid.innerHTML = "";
+  const rows = type===96?8:6, cols = type===96?12:6;
+  const RL = "ABCDEFGH".slice(0,rows);
+  mkEl(grid,"div","col-lbl","");
+  for(let c=1;c<=cols;c++) mkEl(grid,"div","col-lbl",String(c));
+  for(let r=0;r<rows;r++){
+    mkEl(grid,"div","row-lbl",RL[r]);
+    for(let c=1;c<=cols;c++){
+      const id=`${RL[r]}${c}`;
+      const w=document.createElement("div");
+      w.className="well"; w.id=`well-${id}`;
+      w.innerHTML=`<div class="well-tip">${id}</div>`;
+      w.onclick=()=>moveToWell(id);
+      grid.appendChild(w);
+    }
+  }
+}
+function mkEl(p,tag,cls,txt){const e=document.createElement(tag);e.className=cls;e.textContent=txt;p.appendChild(e);return e}
+
+// ══════════════════════════════════════════════
+// Plate toggle
+// ══════════════════════════════════════════════
+function setPlate(type){
+  document.getElementById("ptog-96").classList.toggle("on",type===96);
+  document.getElementById("ptog-36").classList.toggle("on",type===36);
+  document.getElementById("hdr-plate").textContent=`${type}-WELL`;
+  buildPlate(type);
+  updateAll();
+  fetch(`/api/plate/${type}`,{method:"POST"}).catch(()=>{});
+}
+
+// ══════════════════════════════════════════════
+// Well highlight
+// ══════════════════════════════════════════════
+function highlightWell(id){
+  if(currentWell){
+    const p=document.getElementById(`well-${currentWell}`);
+    if(p) p.classList.remove("current");
+  }
+  currentWell=id;
+  document.getElementById("well-badge").textContent=id||"—";
+  document.getElementById("stat-well").textContent=id||"—";
+  document.getElementById("feed-well-label").textContent=id?`Well ${id}`:"—";
+  if(id){
+    const w=document.getElementById(`well-${id}`);
+    if(w) w.classList.add("current");
+  }
+}
+
+// ══════════════════════════════════════════════
+// API
+// ══════════════════════════════════════════════
+async function api(path,method="GET",body=null){
+  const opts={method,headers:{"Content-Type":"application/json"}};
+  if(body) opts.body=JSON.stringify(body);
+  const r=await fetch(path,opts);
+  return r.json();
+}
+
+// ══════════════════════════════════════════════
+// Connection & Camera
+// ══════════════════════════════════════════════
+async function connectArduino(){
+  const port=document.getElementById("sel-port").value;
+  const btn=document.getElementById("btn-connect");
+  btn.textContent="Connecting..."; btn.disabled=true;
+  const r=await api("/api/connect","POST",{port,baud:115200});
+  btn.textContent="Connect Arduino"; btn.disabled=false;
+  if(r.ok) showToast(`Connected: ${port}`,"ok");
+  else showToast(`Error: ${r.error}`,"err");
+}
+
+async function initCamera(){
+  const btn=document.getElementById("btn-cam-init");
+  btn.textContent="Initialising..."; btn.disabled=true;
+  const r=await api("/api/camera/init","POST");
+  btn.textContent="🎥 Initialise Camera"; btn.disabled=false;
+  if(r.ok){
+    showToast("Camera ready","ok");
+    showFeed(true);
+  } else {
+    showToast(`Camera error: ${r.error}`,"err");
+  }
+}
+
+function showFeed(on){
+  const placeholder=document.getElementById("feed-placeholder");
+  const img=document.getElementById("feed-img");
+  const overlay=document.getElementById("feed-overlay");
+  const sharpBar=document.getElementById("sharp-bar-wrap");
+  cameraReady=on;
+  if(on){
+    placeholder.style.display="none";
+    img.style.display="block";
+    img.src="/api/stream";
+    overlay.style.display="flex";
+    sharpBar.style.display="flex";
+  } else {
+    placeholder.style.display="flex";
+    img.style.display="none";
+    img.src="";
+    overlay.style.display="none";
+    sharpBar.style.display="none";
+  }
+}
+
+async function refreshPorts(){
+  const ports=await api("/api/ports").catch(()=>[]);
+  const sel=document.getElementById("sel-port");
+  sel.innerHTML="";
+  (ports.length?ports:["/dev/ttyUSB0","/dev/ttyACM0"]).forEach(p=>{
+    const o=document.createElement("option");o.value=o.textContent=p;sel.appendChild(o);
+  });
+}
+
+// ══════════════════════════════════════════════
+// Stage Commands
+// ══════════════════════════════════════════════
+async function doHome(){
+  showToast("Homing...","");
+  const r=await api("/api/home","POST");
+  if(r.ok) showToast("Homed to A1","ok");
+  else showToast(r.error,"err");
+}
+
+async function doScan(){
+  const r=await api("/api/cmd","POST",{cmd:"scan"});
+  if(!r.ok) showToast(r.error,"err");
+}
+
+async function doStop(){
+  await api("/api/stop","POST");
+  showToast("Stopped","warn");
+}
+
+async function moveToWell(id){
+  highlightWell(id);
+  const r=await api(`/api/move/${id}`,"POST");
+  if(!r.ok) showToast(r.error,"err");
+}
+
+// ══════════════════════════════════════════════
+// Z Control
+// ══════════════════════════════════════════════
+function setZPre(el,steps){
+  document.querySelectorAll(".z-pre").forEach(p=>p.classList.remove("on"));
+  el.classList.add("on"); zStep=steps;
+}
+
+async function doZ(dir){
+  const r=await api("/api/cmd","POST",{cmd:`${dir} ${zStep}`});
+  if(!r.ok){showToast(r.error,"err");return}
+  const m=(r.response||"").match(/Z=(-?\d+)/);
+  if(m) document.getElementById("z-display").textContent=`Z = ${m[1]}`;
+}
+
+async function doZCustom(dir){
+  const val=parseInt(document.getElementById("z-custom").value);
+  if(!val||val<=0){showToast("Enter a valid step count","warn");return}
+  const r=await api("/api/cmd","POST",{cmd:`${dir} ${val}`});
+  if(!r.ok){showToast(r.error,"err");return}
+  const m=(r.response||"").match(/Z=(-?\d+)/);
+  if(m) document.getElementById("z-display").textContent=`Z = ${m[1]}`;
+}
+
+async function doSetzero(){
+  await api("/api/cmd","POST",{cmd:"setzero"});
+  document.getElementById("z-display").textContent="Z = 0";
+  showToast("Z set to 0","ok");
+}
+
+// ══════════════════════════════════════════════
+// Capture
+// ══════════════════════════════════════════════
+async function captureManual(){
+  if(!cameraReady){showToast("Initialise camera first","warn");return}
+  const btn=document.getElementById("btn-capture");
+  btn.textContent="Capturing..."; btn.disabled=true;
+  const r=await api("/api/capture","POST");
+  btn.textContent="📷 Capture & Save"; btn.disabled=false;
+  if(r.ok){
+    showToast(`Saved — sharpness: ${r.sharpness}`,"ok");
+    updateSharpness(r.sharpness);
+  } else {
+    showToast(r.error,"err");
+  }
+}
+
+function updateSharpness(score){
+  const pct=Math.min(100,Math.round(score/50));
+  document.getElementById("sharp-fill").style.width=pct+"%";
+  document.getElementById("feed-sharp").textContent=`♦ ${score.toFixed(1)}`;
+}
+
+// ══════════════════════════════════════════════
+// Eject / Return
+// ══════════════════════════════════════════════
+async function doEject(){
+  const r=await api("/api/eject","POST");
+  if(!r.ok){showToast(r.error,"err");return}
+  setEjected(true);
+  showToast("Stage ejected — swap plate then press Return","warn");
+}
+async function doReturn(){
+  const r=await api("/api/return","POST");
+  if(!r.ok){showToast(r.error,"err");return}
+  setEjected(false);
+  buildPlate(plateType);
+  showToast("Returned to home","ok");
+}
+function setEjected(on){
+  document.getElementById("btn-eject").disabled=on;
+  document.getElementById("btn-return").disabled=!on;
+  document.getElementById("eject-status").style.display=on?"":"none";
+  document.getElementById("eject-card").className=on?"card warn-border":"card";
+}
+
+// ══════════════════════════════════════════════
+// USB Drives
+// ══════════════════════════════════════════════
+async function refreshDrives(){
+  const drives=await api("/api/drives").catch(()=>[]);
+  const list=document.getElementById("drive-list");
+  list.innerHTML="";
+  drives.forEach((d,i)=>{
+    const item=document.createElement("div");
+    item.className="drive-item"+(selectedDrive===d.path?" on":"");
+    const usb=d.path.includes("usb")||d.path.includes("mnt");
+    item.innerHTML=`<span class="drive-icon">${usb?"🖴":"💾"}</span>
+      <div style="flex:1;min-width:0"><div class="drive-name">${d.name}</div><div class="drive-path">${d.path}</div></div>
+      <span class="drive-size">${d.size}</span>`;
+    item.onclick=()=>{
+      selectedDrive=d.path;
+      document.querySelectorAll(".drive-item").forEach(el=>el.classList.remove("on"));
+      item.classList.add("on"); updateAll();
+    };
+    list.appendChild(item);
+    if(i===0&&!selectedDrive){selectedDrive=d.path;item.classList.add("on")}
+  });
+}
+
+// ══════════════════════════════════════════════
+// Folder Preview & Storage Estimate
+// ══════════════════════════════════════════════
+function updateAll(){updateFolderPreview();updateStorageEst()}
+
+function updateFolderPreview(){
+  const s=document.getElementById("exp-folder").value;
+  const iv=parseFloat(document.getElementById("exp-interval").value)||2;
+  const id=document.getElementById("exp-id").value||"EXP_001";
+  const base=selectedDrive||"/mnt/usb0";
+  let p="";
+  if(s==="DAY/BATCH"){
+    const bpd=Math.max(1,Math.floor(24/iv));
+    p=`${base}/${id}/\n  DAY1/\n    Batch001/  ← Hour 0\n    Batch002/  ← Hour ${iv}\n    Batch${String(bpd).padStart(3,"0")}/  ← last of day\n  DAY2/\n    ...`;
+  } else if(s==="HOUR"){
+    p=`${base}/${id}/\n  Hour_0000/\n  Hour_${String(Math.round(iv)).padStart(4,"0")}/\n  ...`;
+  } else {
+    p=`${base}/${id}/\n  Round001/\n  Round002/\n  ...`;
+  }
+  document.getElementById("folder-preview").textContent=p;
+}
+
+function updateStorageEst(){
+  const iv=parseFloat(document.getElementById("exp-interval").value)||2;
+  const ev=document.getElementById("exp-end").value;
+  const wells=plateType===96?96:36;
+  let days=7;
+  if(ev){const ms=new Date(ev)-new Date();days=Math.max(0.1,ms/86400000)}
+  const rounds=Math.ceil((days*24)/iv);
+  const imgs=rounds*wells*2;
+  const gb=(imgs*2/1024).toFixed(1);
+  maxRound=rounds;
+  document.getElementById("storage-est").textContent=
+    `${wells} wells × ${rounds} rounds × 2 files\n= ${imgs.toLocaleString()} images ≈ ${gb} GB`;
+}
+
+// ══════════════════════════════════════════════
+// Experiment
+// ══════════════════════════════════════════════
+async function startExperiment(){
+  if(!cameraReady){showToast("Initialise camera first","warn");return}
+  const expId=document.getElementById("exp-id").value;
+  const storage=selectedDrive?`${selectedDrive}/${expId||"EXP"}`:"/home/pi/microscope_data";
+  const cfg={
+    experiment_id:          expId,
+    capture_interval_hours: parseFloat(document.getElementById("exp-interval").value),
+    settle_delay_ms:        parseInt(document.getElementById("exp-settle").value),
+    autofocus_z_range:      parseInt(document.getElementById("exp-zrange").value),
+    autofocus_step_size:    parseInt(document.getElementById("exp-zstep").value),
+    end_time:               new Date(document.getElementById("exp-end").value).toISOString(),
+    plate_type:             plateType,
+    folder_structure:       document.getElementById("exp-folder").value,
+    storage_path:           storage,
+  };
+  const r=await api("/api/experiment/start","POST",cfg);
+  if(r.ok){showToast("Experiment started!","ok");setExpRunning(true)}
+  else showToast(r.error,"err");
+}
+
+async function stopExperiment(){
+  await api("/api/experiment/stop","POST");
+  showToast("Experiment stopped","warn");
+  setExpRunning(false);
+}
+
+function setExpRunning(on){
+  experimentRunning=on;
+  document.getElementById("btn-start").disabled=on;
+  document.getElementById("btn-stop-exp").disabled=!on;
+  document.getElementById("exp-prog-wrap").style.display=on?"":"none";
+  document.getElementById("hdr-run").textContent=on?"RUNNING":"IDLE";
+  document.getElementById("hdr-run").className="run-badge"+(on?" on":"");
+}
+
+// ══════════════════════════════════════════════
+// Countdown
+// ══════════════════════════════════════════════
+function updateCountdown(){
+  if(!nextScanAt){document.getElementById("countdown").textContent="";document.getElementById("prog-countdown").textContent="";return}
+  const diff=Math.max(0,new Date(nextScanAt)-new Date());
+  const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  const txt=`Next scan in ${h}h ${String(m).padStart(2,"0")}m ${String(s).padStart(2,"0")}s`;
+  document.getElementById("countdown").textContent=txt;
+  document.getElementById("prog-countdown").textContent=txt;
+}
+
+// ══════════════════════════════════════════════
+// Poll Status
+// ══════════════════════════════════════════════
+async function pollStatus(){
+  let d;try{d=await api("/api/status")}catch(e){return}
+
+  document.getElementById("hdr-ard").className="dot"+(d.connected?" on":"");
+  document.getElementById("hdr-cam").className="dot"+(d.camera_ready?" on":"");
+
+  // Auto-show feed if camera became ready
+  if(d.camera_ready&&!cameraReady) showFeed(true);
+
+  document.getElementById("stat-round").textContent=d.current_round;
+  document.getElementById("stat-images").textContent=d.total_images;
+  document.getElementById("stat-next").textContent=d.next_scan_at?new Date(d.next_scan_at).toLocaleTimeString():"—";
+  document.getElementById("stat-end").textContent=d.experiment_end?new Date(d.experiment_end).toLocaleString():"—";
+
+  if(d.current_well&&d.current_well!==currentWell) highlightWell(d.current_well);
+
+  if(d.last_sharpness>0) updateSharpness(d.last_sharpness);
+
+  // Progress ring
+  if(d.experiment_running&&maxRound>0){
+    const pct=Math.min(1,d.current_round/maxRound);
+    document.getElementById("prog-circle").style.strokeDashoffset=163.4*(1-pct);
+    document.getElementById("prog-num").textContent=d.current_round;
+    document.getElementById("prog-well").textContent=d.current_well||"—";
+    document.getElementById("prog-imgs").textContent=`${d.total_images} images`;
+  }
+
+  nextScanAt=d.next_scan_at||null;
+  if(d.ejected!==undefined) setEjected(d.ejected);
+
+  if(d.experiment_running&&!experimentRunning) setExpRunning(true);
+  if(!d.experiment_running&&experimentRunning)  setExpRunning(false);
+
+  updateLog(d.log||[]);
+}
+
+// ══════════════════════════════════════════════
+// Log
+// ══════════════════════════════════════════════
+function updateLog(lines){
+  if(logPaused) return;
+  if(JSON.stringify(lines)===JSON.stringify(lastLog)) return;
+  lastLog=lines;
+  const box=document.getElementById("log-box");
+  box.innerHTML="";
+  lines.forEach(l=>{
+    const d=document.createElement("div");
+    d.className="log-line";
+    const ll=l.toLowerCase();
+    if(ll.includes("error")||ll.includes("[err]")) d.classList.add("err");
+    else if(ll.includes("warn")) d.classList.add("warn");
+    else if(ll.includes("===")||ll.includes("round")||ll.includes("homed")||ll.includes("scan")) d.classList.add("info");
+    else if(ll.includes("ok")||ll.includes("captured")||ll.includes("moved")) d.classList.add("ok");
+    d.textContent=l;
+    box.appendChild(d);
+  });
+  box.scrollTop=box.scrollHeight;
+}
+function clearLog(){document.getElementById("log-box").innerHTML="";lastLog=[]}
+function toggleLogPause(){
+  logPaused=!logPaused;
+  document.getElementById("btn-log-pause").textContent=logPaused?"▶ Resume":"⏸ Pause";
+}
+
+// ══════════════════════════════════════════════
+// Config
+// ══════════════════════════════════════════════
+async function loadConfig(){
+  try{
+    const cfg=await api("/api/config");
+    if(cfg.capture_interval_hours) document.getElementById("exp-interval").value=cfg.capture_interval_hours;
+    if(cfg.settle_delay_ms)         document.getElementById("exp-settle").value=cfg.settle_delay_ms;
+    if(cfg.autofocus_z_range)       document.getElementById("exp-zrange").value=cfg.autofocus_z_range;
+    if(cfg.autofocus_step_size)     document.getElementById("exp-zstep").value=cfg.autofocus_step_size;
+    if(cfg.experiment_id)           document.getElementById("exp-id").value=cfg.experiment_id;
+    if(cfg.folder_structure)        document.getElementById("exp-folder").value=cfg.folder_structure;
+    if(cfg.plate_type)              setPlate(parseInt(cfg.plate_type));
+    updateAll();
+  }catch(e){}
+}
+
+// ══════════════════════════════════════════════
+// Confirm Modal
+// ══════════════════════════════════════════════
+let _cb=null;
+function confirmThen(msg,cb){
+  _cb=cb;
+  document.getElementById("modal-body").textContent=msg;
+  document.getElementById("modal").classList.add("show");
+  document.getElementById("modal-ok").onclick=()=>{closeModal();_cb&&_cb()};
+}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+
+// ══════════════════════════════════════════════
+// Toast
+// ══════════════════════════════════════════════
+let _tt=null;
+function showToast(msg,type=""){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.className="show"+(type?` ${type}`:"");
+  clearTimeout(_tt);_tt=setTimeout(()=>{t.className=""},3200);
+}
+</script>
+</body>
+</html>

@@ -972,58 +972,76 @@ The system is split across two processors with clearly separated responsibilitie
  
 #### 1.2 Software Flow
  
-The web GUI runs in any browser on the same network. User actions hit Flask REST endpoints, which dispatch commands to the SerialManager (for motor moves) or CameraManager (for captures). The ExperimentRunner runs as a background thread, orchestrating the full 24/7 scan cycle independently of the GUI.
+The web GUI runs in any browser on the same network. User actions hit Flask REST endpoints (`/api/...`), which send text commands to the Arduino over serial (`serial_send`, one command at a time behind a lock) or capture images with Picamera2. The experiment loop runs as a background thread, repeating the scan cycle independently of the GUI. A second thread keeps a 640×480 MJPEG live view at `/api/stream`.
+
+| Route | Action |
+| :--- | :--- |
+| `GET /api/status` | Stage, experiment and log state (polled by the GUI) |
+| `GET /api/stream` | Live MJPEG feed |
+| `POST /api/connect`, `/api/camera/init` | Open the serial port / start the camera (independent of each other) |
+| `POST /api/cmd`, `/api/move/<well>`, `/api/home`, `/api/stop` | Stage control |
+| `POST /api/plate/<96 or 36>` | Plate type |
+| `POST /api/capture` | One manual capture |
+| `POST /api/eject`, `/api/return` | Move the plate out for replacement, and back |
+| `POST /api/experiment/start`, `/api/experiment/stop` | Start / stop the experiment loop |
+| `GET/POST /api/config` | Read / save `config.json` |
+| `GET /api/ports`, `/api/drives` | Serial ports; mounted USB drives |
  
 ![Software Flow](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Software_Flow.jpg)
  
 #### 1.3 Experiment Loop
  
-Each round begins with an autofocus sweep at the reference well (A1) using the Tenengrad focus metric. The stage then visits every well in serpentine order — move, settle, capture, repeat. After all 96 wells are done, the system waits for the configured interval, then checks whether the experiment end time has been reached. If not, it starts the next round. If yes, the experiment ends automatically.
+Each round begins with homing and a focus sweep at the reference well (A1) using the Tenengrad focus metric (once per round; per-well focus is not decided yet, see [Future Work](#future-work)). The stage then visits every well in serpentine order with a handshake: the Arduino moves, sends `AT <well>` and waits; the Pi waits for the settle delay, captures, and replies `OK`. If no `OK` arrives within 30 s, the Arduino aborts with `TIMEOUT`. After all 96 wells are done, the system waits for the configured interval, then checks whether the experiment end time has been reached. If not, it starts the next round. If yes, the experiment ends automatically.
  
 ![Experiment Loop](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Experiment_Loop.jpg)
  
 #### 1.4 Repository Structure
  
 ```
-Automation-Incubator-Microscope/
-├── backend/
-│   └── app.py              # Flask server — routes, ExperimentRunner, CameraManager, SerialManager
-├── frontend/
-│   ├── index.html          # Web GUI — stage controls, experiment panel, live status
-│   └── assets/
-│       └── imbsllogo.png
-├── firmware/
-│   └── sketch_oct03a.ino   # Arduino Nano V3 — STEP/DIR, SLP, limit switches, stop
-├── config.json             # Runtime config — interval, settle delay, storage path, Z range
-└── README.md
+software/
+├── backend/app.py          # Flask server — routes, serial, camera, experiment loop, focus sweep
+├── frontend/index.html     # Web GUI — plain HTML/CSS/JS, served by Flask
+├── config.json             # Runtime config — interval, settle delay, storage path, Z range, plate type
+└── requirements.txt        # flask, pyserial, opencv-python-headless, numpy (picamera2 via apt)
+firmware/
+├── microscope_main/                # Arduino Nano V3 over USB serial (used now)
+└── incubator_microscope_uart/      # Same commands over GPIO UART (in progress, needs a voltage divider)
+analysis/
+├── xy_repeatability.py     # X/Y repeatability: phase correlation, 50 cycles (sections 7-8)
+├── y_repeatability.py      # Y-only repeatability (A1 <-> E1)
+├── focus_validator.py      # Z focus repeatability capture (Laplacian variance)
+└── focus_report.py         # HTML report from the focus CSV (section 9)
 ```
- 
+
+Run the panel on the Pi: `pip install -r software/requirements.txt`, `sudo apt install -y python3-picamera2`, then `python3 software/backend/app.py` and open `http://<pi-ip>:5000`.
+
 ---
- 
+
 ### 2. Firmware
- 
-The Arduino firmware (`sketch_oct03a.ino`) handles all real-time hardware tasks. It listens for serial commands from the Raspberry Pi and executes them deterministically without OS interference.
- 
+
+The Arduino firmware (`firmware/microscope_main/microscope_main.ino`) handles all real-time hardware tasks. It reads one text command per line from the Raspberry Pi and executes it without OS interference. It supports 96-well (9 mm pitch, 1800 steps) and 36-well (13 mm pitch, 2600 steps) plates.
+
 #### Serial Command Reference
- 
-| Command | Action |
-| :--- | :--- |
-| `A1` … `H12` | Move to specified well |
-| `home` | Home X and Y axes to limit switches |
-| `scan` | Home then serpentine scan all 96 wells |
-| `U` | Z axis up one increment |
-| `D` | Z axis down one increment |
-| `sleep` | Set SLP HIGH — all drivers enter low-power sleep |
-| `wake` | Set SLP LOW — all drivers become active |
-| `stop` | Abort current movement or scan mid-operation |
+
+| Command | Action | Reply |
+| :--- | :--- | :--- |
+| `A1` … `H12` | Move to a well (`A1` … `F6` for 36-well) | `MOVED <well>` |
+| `home` | Home X and Y axes to the limit switches | `HOMED` |
+| `scan` | Home, then serpentine scan with the `AT`/`OK` handshake | `AT <well>` per well, then `SCAN_DONE` |
+| `U <n>` / `D <n>` | Z axis up / down by n steps | `Z=<position>` |
+| `setzero` | Set the current Z position as 0 | `Z=0` |
+| `status` | Report position, plate type and driver state | status line |
+| `plate 96` / `plate 36` | Set the plate type | `PLATE <type>` |
+| `eject` / `return` | Move the plate out for replacement / back home | `EJECTED` / `HOMED` |
+| `stop` | Abort the current move or scan | `STOP` |
  
 ---
  
 ### 3. GUI
  
-The GUI is a single-page web app served by Flask, accessible from any browser on the same network as the Raspberry Pi. It is built with plain HTML, Tailwind CSS, and vanilla JavaScript — no build step required.
- 
-**Stage controls** — Home, Z Up, Z Down, Autofocus, Scan All, Stop, Reset Busy are always visible at the top. The 96-well grid below highlights the current well position in real time (polled every 1 second).
+The GUI is a single-page web app served by Flask, accessible from any browser on the same network as the Raspberry Pi. It is built with plain HTML, CSS, and vanilla JavaScript — no build step required.
+
+**Connection and stage controls** — Connect Arduino (serial port picker), Initialise Camera, Z up/down (fixed or custom steps), Set Z = 0, Home XY, Scan All Wells, Stop, Eject / Return (plate replacement), and Capture & Save. A live camera view and a log panel sit beside the controls. The well grid highlights the current well position in real time (polled every 1 second).
  
 **Experiment panel** — sits below the grid. User fills in Experiment ID (optional), capture interval, settle delay, storage path, autofocus Z range, and end date/time. Pressing Start saves the settings to `config.json` and launches the experiment loop. A live status box shows round number, total images captured, countdown to next scan, and experiment end time.
  
@@ -1039,16 +1057,20 @@ Every captured image goes through a three-step pipeline immediately after captur
  
 #### 4.2 Folder Structure
  
+Default layout (`folder_structure: "DAY/BATCH"`; `HOUR` and `FLAT` are also available in the GUI):
+
 ```
-/data/
-└── EXP_001_20260401/
-    ├── metadata.json           ← experiment parameters
-    ├── A1/
-    │   ├── 20260401_080000_A1_r001_raw.png
-    │   ├── 20260401_080000_A1_r001_gray.png
-    │   └── ...
-    ├── A2/
-    └── ...
+<storage_path>/
+└── EXP_001/
+    ├── metadata.json           ← experiment parameters + start time
+    ├── DAY1/
+    │   ├── Batch001/           ← round 1
+    │   │   ├── A1/
+    │   │   │   ├── 20260401_080000_A1_r001_raw.png
+    │   │   │   └── 20260401_080000_A1_r001_gray.png
+    │   │   └── A2/ ...
+    │   └── Batch002/           ← round 2
+    └── DAY2/ ...
 ```
  
 #### 4.3 File Naming Convention
@@ -1083,10 +1105,10 @@ Each experiment generates a `metadata.json` at the experiment root:
  
 #### 4.5 Storage Estimate
  
-For a 96-well plate, captured every 2 hours over 7 days, saving grayscale PNG (~2 MB each):
- 
+For a 96-well plate, captured every 2 hours over 7 days. Each capture saves a raw PNG (~2 MB) and a grayscale PNG (~1 MB):
+
 ```
-96 wells × 12 captures/day × 7 days = 8,064 images ≈ 16 GB/week
+96 wells × 12 captures/day × 7 days = 8,064 captures × 2 files = 16,128 files ≈ 24-32 GB/week
 ```
  
 Recommended storage: USB SSD 256 GB connected to Raspberry Pi.
@@ -1115,14 +1137,12 @@ This is an active lab tool, not a finished product — the following is what's k
 ## 📁 Repository Structure
 
 ```
-Automation-Incubator-Microscope/
-├── src/                    # Images and media assets
-├── mechanical/             # CAD files and FEA results
-│   ├── stage-plate/
-│   ├── motor-brackets/
-│   └── drawings/
-├── electrical/             # Schematics and BOM
-├── software/               # Firmware and control scripts
-├── docs/                   # Additional documentation
+automated-incubator-microscope/
+├── assets/                 # Images, photos, FEA and test results used in this README
+├── mechanical/             # Focus repeatability report (focus_report.html)
+├── electrical/             # Schematic (elec_sch.pdf)
+├── software/               # Flask backend, web GUI, config (see Software > Repository Structure)
+├── firmware/               # Arduino Nano V3 firmware (USB serial and GPIO UART versions)
+├── analysis/               # Repeatability and focus test scripts behind sections 7-9
 └── README.md
 ```

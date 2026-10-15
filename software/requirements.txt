@@ -1,0 +1,6 @@
+flask>=3.0
+pyserial>=3.5
+opencv-python-headless>=4.9
+numpy>=1.26
+# picamera2 → jangan pip install, gunakan:
+# sudo apt install -y python3-picamera2
