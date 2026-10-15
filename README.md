@@ -778,19 +778,21 @@ Positioning repeatability was measured using phase correlation on paired images:
   <img src="assets/repeatability_results/x_axis_repeatability_chart.png" width="600"/>
 </p>
 
-| Metric | Value (px) |
-| :--- | :---: |
-| Mean distance | 0.082 |
-| Std dev | 0.043 |
-| Max distance | 0.170 |
-| Mean dx | +0.055 |
-| Mean dy | +0.014 |
+| Metric | Value (px) | Value (µm, @ 0.295 µm/px) |
+| :--- | :---: | :---: |
+| Mean distance | 0.082 | 0.024 |
+| Std dev | 0.043 | 0.013 |
+| Max distance | 0.170 | 0.050 |
+| Mean dx | +0.055 | — |
+| Mean dy | +0.014 | — |
 
-> Results are reported in image pixels, the unit phase correlation actually measures. An earlier version converted them to µm using the 1.55 µm sensor pixel size, which does not account for optical magnification and overstated the stage-space distance. A µm value needs the effective µm/px at the sample plane, which was not recorded for this test.
+> **Pixel-to-µm conversion.** Images were captured at full IMX477 resolution (4056 × 3040) with the 10x objective at 84.2 mm tube length, and phase correlation ran on an unscaled 1024 × 1024 center crop. One image pixel therefore spans 1.55 µm ÷ (10 × 84.2/160) ≈ **0.295 µm** at the sample plane. An earlier version used the 1.55 µm sensor pixel size directly, which skipped the optical magnification and overstated distances about 5×. The magnification is the linear tube-length approximation from [Imaging System Design](#6-imaging-system-design), so treat the µm values as approximate.
+>
+> **Measurement limit.** These values are far below the optical resolution of a 10x objective (~1 µm) and the motor's full step (5 µm). They show the stage returns to a position indistinguishable at this measurement scale, not nanometer-level positioning accuracy.
 
 #### Insight
 
-Sub-pixel repeatability (mean 0.082 px, max 0.170 px) — the X-axis consistently returns to the same position across all 50 cycles, with no visible trend or drift in the displacement plot.
+Sub-pixel repeatability (mean 0.082 px ≈ 0.024 µm, max 0.170 px ≈ 0.050 µm) — the X-axis consistently returns to the same position across all 50 cycles, with no visible trend or drift in the displacement plot.
 
 ---
 
@@ -802,17 +804,19 @@ Same phase-correlation method as the X-axis test, moving between well A1 and wel
   <img src="assets/repeatability_results/y_axis_repeatability_chart.png" width="600"/>
 </p>
 
-| Metric | Value (px) |
-| :--- | :---: |
-| Mean distance | 0.241 |
-| Std dev | 0.242 |
-| Max distance | 1.102 |
-| Mean dx | +0.051 |
-| Mean dy | −0.013 |
+| Metric | Value (px) | Value (µm, @ 0.295 µm/px) |
+| :--- | :---: | :---: |
+| Mean distance | 0.241 | 0.071 |
+| Std dev | 0.242 | 0.071 |
+| Max distance | 1.102 | 0.325 |
+| Mean dx | +0.051 | — |
+| Mean dy | −0.013 | — |
+
+Same capture setup and pixel-to-µm conversion as the X-axis test.
 
 #### Insight
 
-The Y-axis is measurably less consistent than X and Z: mean error (0.241 px) is about 3× the X-axis's, and the standard deviation (0.242 px) is almost as large as the mean itself — several cycles show a sharp displacement spike (up to 1.10 px) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms (about one pixel at worst), but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
+The Y-axis is measurably less consistent than X and Z: mean error (0.071 µm) is about 3× the X-axis's, and the standard deviation (0.071 µm) is as large as the mean itself — several cycles show a sharp displacement spike (up to 0.325 µm, about one pixel) rather than a tight, flat band like the X-axis result. This matches physical observation of vibration during Y-axis movement. The numbers aren't catastrophic in absolute terms, but the inconsistency is the reason the Y-axis mechanical assembly is flagged for revision — see [Future Work](#future-work).
 
 <p align="center">
   <img src="assets/hardware_photos/stage_motion.gif" width="450"/>
