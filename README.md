@@ -164,30 +164,30 @@ confirmed by the blue-dominated contour.
 <details>
 <summary>Displacement</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Von Mises Stress</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-VMS_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-VMS_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-VMS_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-VMS_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-VMS_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Safety Factor</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-CF-SF_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-SF_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-SF_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-SF_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-CF-SF_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -201,30 +201,30 @@ confirmed by the blue-dominated contour.
 <details>
 <summary>Displacement</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Von Mises Stress</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-VMS_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-VMS_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-VMS_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-VMS_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-VMS_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Safety Factor</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/PLA-Basic-SF_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-SF_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-SF_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-SF_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/PLA-Basic-SF_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -238,30 +238,30 @@ confirmed by the blue-dominated contour.
 <details>
 <summary>Displacement</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Von Mises Stress</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-VMS_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-VMS_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-VMS_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-VMS_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-VMS_4.png" width="500" height="400"/>
 </p>
 </details>
 
 <details>
 <summary>Safety Factor</summary>
 <p align="center">
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_1.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_2.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_3.png" width="500" height="400"/>
-  <img src="https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/mechanical/stage-plate/Alum-SF_4.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-SF_1.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-SF_2.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-SF_3.png" width="500" height="400"/>
+  <img src="mechanical/analysis/Alum-SF_4.png" width="500" height="400"/>
 </p>
 </details>
 
@@ -554,50 +554,50 @@ Images captured using a professional laboratory microscope as ground truth refer
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/160mm_with_light.jpg" width="200"/></td>
     <td>Severely out of focus — despite being the objective's nominal spec, beads appear as one large unresolvable blur with no visible edges. The nominal tube length did not translate directly to good focus at this working distance.</td>
   </tr>
   <tr>
     <td align="center">2</td>
     <td>8.4 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/8.4mm_with_light.jpg" width="200"/></td>
     <td>Sharp — bead edges and fine surface debris are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/11.2mm_with_light.jpg" width="200"/></td>
     <td>Sharp — comparable resolution to 8.4 mm, clean bead edge definition.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/84.2mm_with_light.jpg" width="200"/></td>
     <td>Bead edges are defined but internal detail is soft — noticeably less sharp than the shorter tube lengths.</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/64mm_with_light.jpg" width="200"/></td>
     <td>Sharp — bead edges and internal ring texture are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm (4.5x Magnification)</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/72mm_with_light.jpg" width="200"/></td>
     <td>Edges are reasonably defined but softer overall than 64 mm or 80 mm — intermediate sharpness.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm (5x Magnification)</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/10x/80mm_with_light.jpg" width="200"/></td>
     <td>Sharp — fine features (a stray fiber in frame) are crisply resolved.</td>
   </tr>
 </table>
@@ -617,50 +617,50 @@ Images captured using a professional laboratory microscope as ground truth refer
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/160mm_with_light.jpg" width="200"/></td>
     <td>Mixed — beads toward the frame edges show reasonably defined edges, but a large soft, hazy artifact (likely an air bubble out of the focal plane) dominates the center of the frame.</td>
   </tr>
   <tr>
     <td align="center">2</td>
     <td>8.4 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/8.4mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/8.4mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/8.4mm.jpg" width="200"/></td>
+    <td align="center"><sub>not captured</sub></td>
     <td>Out of focus at this tube length with 4x objective — the combination of short tube length and lower base magnification places the image plane outside the usable focus range.</td>
   </tr>
   <tr>
     <td align="center">3</td>
     <td>11.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/11.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/11.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/11.2mm.jpg" width="200"/></td>
+    <td align="center"><sub>not captured</sub></td>
     <td>Out of focus at this tube length with 4x objective — same constraint as 8.4 mm. These two tube lengths are outside the practical operating range for the 4x objective.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/84.2mm_with_light.jpg" width="200"/></td>
     <td>Sharp — bead edges and fine background debris/bubbles are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">5</td>
     <td>64 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/64mm_with_light.jpg" width="200"/></td>
     <td>Sharp — wide field with many beads in crisp focus; fine hair fibers in the frame are clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">6</td>
     <td>72 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/72mm_with_light.jpg" width="200"/></td>
     <td>Sharp — bead edges clearly defined, consistent with the other 4x results.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_microbeads/4x/80mm_with_light.jpg" width="200"/></td>
     <td>Sharp — bead edges and fine bubbles/debris in the background are clearly resolved.</td>
   </tr>
 </table>
@@ -703,22 +703,22 @@ Images captured using a professional laboratory microscope as ground truth refer
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/160mm_with_light.jpg" width="200"/></td>
     <td>Good — individual cell boundaries on the spheroid surface are resolved, comparable in sharpness to the professional microscope reference. Unlike the microbead test, 160 mm is not a poor result for spheroids.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/84.2mm_with_light.jpg" width="200"/></td>
     <td>Good — spheroid surface texture and a nearby smaller cell cluster are both clearly resolved.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/10x/80mm_with_light.jpg" width="200"/></td>
     <td>Good — spheroid surface texture is clearly resolved, including a fine fiber crossing the frame.</td>
   </tr>
 </table>
@@ -738,22 +738,22 @@ Images captured using a professional laboratory microscope as ground truth refer
   <tr>
     <td align="center">1</td>
     <td>160 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/160mm_with_light.jpg" width="200"/></td>
     <td>Good — the spheroid itself is in sharp focus with visible surface texture; an unrelated dark object elsewhere in frame is out of the focal plane, but doesn't reflect on the spheroid's own sharpness.</td>
   </tr>
   <tr>
     <td align="center">4</td>
     <td>84.2 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/84.2mm_with_light.jpg" width="200"/></td>
     <td>Soft — the spheroid is visible but lower-contrast than the 160 mm and 80 mm results, with more out-of-focus debris in the background.</td>
   </tr>
   <tr>
     <td align="center">7</td>
     <td>80 mm</td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm.jpg?raw=true" width="200"/></td>
-    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm_with_light.jpg?raw=true" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm.jpg" width="200"/></td>
+    <td align="center"><img src="assets/imaging_results/data_spheroids/4x/80mm_with_light.jpg" width="200"/></td>
     <td>Out of focus — most of the frame is blurred; only a small spheroid at the frame edge is marginally resolved. The weakest result in the spheroid set.</td>
   </tr>
 </table>
@@ -972,7 +972,7 @@ The schematic is organized into 4 sheets:
  
 The system is split across two processors with clearly separated responsibilities. The Raspberry Pi 4 handles all high-level tasks — running the Flask web server, managing the experiment loop, controlling the camera, and serving the browser-based GUI. The Arduino Nano V3 handles all real-time low-level tasks — generating STEP/DIR pulses for the three stepper motors, polling limit switches, and controlling the shared SLP pin for driver sleep/wake. Communication between the two is via UART serial (currently USB cable, migrating to TX/RX via bidirectional level shifter).
  
-![System Overview](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/System_Overview.jpg)
+![System Overview](software/diagram/System_Overview.jpg)
  
 #### 1.2 Software Flow
  
@@ -991,13 +991,13 @@ The web GUI runs in any browser on the same network. User actions hit Flask REST
 | `GET/POST /api/config` | Read / save `config.json` |
 | `GET /api/ports`, `/api/drives` | Serial ports; mounted USB drives |
  
-![Software Flow](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Software_Flow.jpg)
+![Software Flow](software/diagram/Software_Flow.jpg)
  
 #### 1.3 Experiment Loop
  
 Each round begins with homing and a focus sweep at the reference well (A1) using the Tenengrad focus metric (once per round; per-well focus is not decided yet, see [Future Work](#future-work)). The stage then visits every well in serpentine order with a handshake: the Arduino moves, sends `AT <well>` and waits; the Pi waits for the settle delay, captures, and replies `OK`. If no `OK` arrives within 30 s, the Arduino aborts with `TIMEOUT`. After all 96 wells are done, the system waits for the configured interval, then checks whether the experiment end time has been reached. If not, it starts the next round. If yes, the experiment ends automatically.
  
-![Experiment Loop](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Experiment_Loop.jpg)
+![Experiment Loop](software/diagram/Experiment_Loop.jpg)
  
 #### 1.4 Repository Structure
  
@@ -1057,7 +1057,7 @@ The GUI is a single-page web app served by Flask, accessible from any browser on
  
 Every captured image goes through a three-step pipeline immediately after capture: raw array from Picamera2 → BGR conversion → grayscale conversion via OpenCV. Both the raw PNG and grayscale PNG are saved side by side. The original is retained for potential reprocessing.
  
-![Data Pipeline](https://github.com/AlvinOctaH/Automation-Incubator-Microscope/blob/main/software/diagram/Data_Pipeline.jpg)
+![Data Pipeline](software/diagram/Data_Pipeline.jpg)
  
 #### 4.2 Folder Structure
  
